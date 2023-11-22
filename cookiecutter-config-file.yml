@@ -1,0 +1,15 @@
+# This project was generated using a Cookiecutter template:
+#       https://github.com/notsatan/go-template
+
+cookiecutter_inputs:
+  project_name: "log2reportportal"
+  go_module_path: "github.com/AdamSaleh/log2reportportal"
+  license_owner: "Adam Saleh"
+  base_branch: "main"
+  contact_email: "asaleh@redhat.com"
+  project_description: "A cli tool to upload testlogs as launches to reportportal"
+  github_specific_features: "y"
+  use_codecov: "y"
+  use_precommit: "y"
+  go_version: "1.18"
+  license: "GNU GPL v3.0"
