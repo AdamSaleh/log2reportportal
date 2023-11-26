@@ -1,0 +1,723 @@
++ export CI=prow
++ CI=prow
++ go mod vendor
+go: downloading github.com/argoproj-labs/argocd-operator v0.0.16-0.20231026135137-c8e49095b254
+go: downloading github.com/argoproj-labs/argo-rollouts-manager v0.0.2-0.20230515023837-0632f3e856d5
+go: downloading github.com/operator-framework/api v0.17.5
+go: downloading github.com/coreos/prometheus-operator v0.40.0
+go: downloading github.com/openshift/api v0.0.0-20220929131120-2bde012f248a
+go: downloading go.uber.org/zap v1.25.0
+go: downloading k8s.io/apimachinery v0.28.3
+go: downloading k8s.io/client-go v0.28.3
+go: downloading sigs.k8s.io/controller-runtime v0.16.3
+go: downloading k8s.io/api v0.28.3
+go: downloading github.com/onsi/ginkgo v1.16.4
+go: downloading github.com/onsi/gomega v1.14.0
+go: downloading sigs.k8s.io/yaml v1.3.0
+go: downloading gotest.tools v2.2.0+incompatible
+go: downloading golang.org/x/mod v0.10.0
+go: downloading github.com/stretchr/testify v1.8.4
+go: downloading github.com/go-logr/logr v1.2.4
+go: downloading github.com/hashicorp/go-version v1.6.0
+go: downloading k8s.io/utils v0.0.0-20230505201702-9f6742963106
+go: downloading github.com/google/go-cmp v0.5.9
+go: downloading go.uber.org/multierr v1.11.0
+go: downloading github.com/gogo/protobuf v1.3.2
+go: downloading k8s.io/klog/v2 v2.100.1
+go: downloading sigs.k8s.io/structured-merge-diff/v4 v4.2.3
+go: downloading github.com/sirupsen/logrus v1.9.3
+go: downloading github.com/prometheus/client_golang v1.16.0
+go: downloading gomodules.xyz/jsonpatch/v2 v2.4.0
+go: downloading github.com/go-logr/zapr v1.2.4
+go: downloading github.com/google/gofuzz v1.2.0
+go: downloading gopkg.in/inf.v0 v0.9.1
+go: downloading gopkg.in/yaml.v2 v2.4.0
+go: downloading github.com/evanphx/json-patch/v5 v5.6.0
+go: downloading github.com/evanphx/json-patch v5.6.0+incompatible
+go: downloading k8s.io/apiextensions-apiserver v0.28.3
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/pmezard/go-difflib v1.0.0
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd
+go: downloading github.com/blang/semver/v4 v4.0.0
+go: downloading github.com/argoproj/argo-cd/v2 v2.8.3
+go: downloading github.com/openshift/client-go v0.0.0-20200325131901-f7baeb993edb
+go: downloading github.com/operator-framework/operator-sdk v0.18.2
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/sethvargo/go-password v0.2.0
+go: downloading golang.org/x/net v0.17.0
+go: downloading github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
+go: downloading github.com/fsnotify/fsnotify v1.6.0
+go: downloading golang.org/x/sys v0.13.0
+go: downloading golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
+go: downloading k8s.io/component-base v0.28.3
+go: downloading github.com/nxadm/tail v1.4.8
+go: downloading github.com/json-iterator/go v1.1.12
+go: downloading k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9
+go: downloading github.com/imdario/mergo v0.3.16
+go: downloading github.com/spf13/pflag v1.0.5
+go: downloading golang.org/x/term v0.13.0
+go: downloading github.com/prometheus/client_model v0.4.0
+go: downloading github.com/prometheus/common v0.44.0
+go: downloading github.com/beorn7/perks v1.0.1
+go: downloading github.com/cespare/xxhash/v2 v2.2.0
+go: downloading github.com/prometheus/procfs v0.10.1
+go: downloading google.golang.org/protobuf v1.31.0
+go: downloading github.com/golang/protobuf v1.5.3
+go: downloading github.com/google/gnostic-models v0.6.8
+go: downloading golang.org/x/oauth2 v0.9.0
+go: downloading golang.org/x/time v0.3.0
+go: downloading github.com/google/uuid v1.3.0
+go: downloading gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
+go: downloading github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+go: downloading github.com/modern-go/reflect2 v1.0.2
+go: downloading github.com/matttproud/golang_protobuf_extensions v1.0.4
+go: downloading golang.org/x/text v0.13.0
+go: downloading github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
+go: downloading github.com/go-openapi/swag v0.22.3
+go: downloading github.com/go-openapi/jsonreference v0.20.2
+go: downloading google.golang.org/appengine v1.6.7
+go: downloading github.com/emicklei/go-restful/v3 v3.11.0
+go: downloading github.com/go-openapi/jsonpointer v0.19.6
+go: downloading github.com/mailru/easyjson v0.7.7
+go: downloading github.com/josharian/intern v1.0.0
+go: downloading golang.org/x/crypto v0.14.0
+++ dirname scripts/openshift-CI-kuttl-tests.sh
++ source scripts/e2e-common.sh
++ KUBECONFIG=/tmp/kubeconfig-3979334039
+++ mktemp -d
++ TMP_DIR=/tmp/tmp.wRBGlOuYjz
++ cp /tmp/kubeconfig-3979334039 /tmp/tmp.wRBGlOuYjz/kubeconfig
++ chmod 640 /tmp/tmp.wRBGlOuYjz/kubeconfig
++ export KUBECONFIG=/tmp/tmp.wRBGlOuYjz/kubeconfig
++ KUBECONFIG=/tmp/tmp.wRBGlOuYjz/kubeconfig
++ cp /tmp/tmp.wRBGlOuYjz/kubeconfig /go/src/github.com/redhat-developer/gitops-operator/kubeconfig
++ pod=openshift-gitops-operator-controller-manager
+++ oc get pods --all-namespaces
+++ grep openshift-gitops-operator-controller-manager
+++ head -1
+++ awk '{print $2}'
++ oc get pods openshift-gitops-operator-controller-manager-cfc866685-mjs6t -n openshift-gitops-operator -o yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "argoproj.io/v1alpha1",
+          "kind": "AppProject",
+          "metadata": {
+            "name": "example"
+          },
+          "spec": null
+        },
+        {
+          "apiVersion": "argoproj.io/v1alpha1",
+          "kind": "Application",
+          "metadata": {
+            "name": "example"
+          },
+          "spec": null
+        },
+        {
+          "apiVersion": "argoproj.io/v1alpha1",
+          "kind": "ApplicationSet",
+          "metadata": {
+            "name": "example"
+          },
+          "spec": null
+        },
+        {
+          "apiVersion": "argoproj.io/v1alpha1",
+          "kind": "ArgoCD",
+          "metadata": {
+            "name": "argocd"
+          },
+          "spec": {
+            "controller": {
+              "resources": {
+                "limits": {
+                  "cpu": "2000m",
+                  "memory": "2048Mi"
+                },
+                "requests": {
+                  "cpu": "250m",
+                  "memory": "1024Mi"
+                }
+              }
+            },
+            "ha": {
+              "enabled": false,
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "250m",
+                  "memory": "128Mi"
+                }
+              }
+            },
+            "rbac": {
+              "defaultPolicy": "",
+              "policy": "g, system:cluster-admins, role:admin\n",
+              "scopes": "[groups]"
+            },
+            "redis": {
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "250m",
+                  "memory": "128Mi"
+                }
+              }
+            },
+            "repo": {
+              "resources": {
+                "limits": {
+                  "cpu": "1000m",
+                  "memory": "1024Mi"
+                },
+                "requests": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                }
+              }
+            },
+            "resourceExclusions": "- apiGroups:\n  - tekton.dev\n  clusters:\n  - '*'\n  kinds:\n  - TaskRun\n  - PipelineRun        \n",
+            "server": {
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "125m",
+                  "memory": "128Mi"
+                }
+              },
+              "route": {
+                "enabled": true
+              }
+            },
+            "sso": {
+              "dex": {
+                "openShiftOAuth": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "128Mi"
+                  }
+                }
+              },
+              "provider": "dex"
+            }
+          }
+        },
+        {
+          "apiVersion": "pipelines.openshift.io/v1alpha1",
+          "kind": "GitopsService",
+          "metadata": {
+            "name": "gitopsservice-sample"
+          },
+          "spec": null
+        }
+      ]
+    capabilities: Deep Insights
+    console.openshift.io/plugins: '["gitops-plugin"]'
+    containerImage: quay.io/redhat-developer/gitops-operator
+    description: Enables teams to adopt GitOps principles for managing cluster configurations
+      and application delivery across hybrid multi-cluster Kubernetes environments.
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "openshift-sdn",
+          "interface": "eth0",
+          "ips": [
+              "10.129.2.12"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "openshift-sdn",
+          "interface": "eth0",
+          "ips": [
+              "10.129.2.12"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    olm.operatorGroup: operator-sdk-og
+    olm.operatorNamespace: openshift-gitops-operator
+    olm.targetNamespaces: ""
+    olmcahash: ab5f689f5cefe9c0d29ccb1e0a6a10a1ead1a255f3394f37ff9b641def8dea08
+    openshift.io/scc: restricted-v2
+    operatorframework.io/cluster-monitoring: "true"
+    operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"AnalysisRun","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"AnalysisTemplate","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"AppProject","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"Application","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"ApplicationSet","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"ArgoCD","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"ArgoCD","version":"v1beta1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"ClusterAnalysisTemplate","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"Experiment","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"Rollout","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"argoproj.io","kind":"RolloutManager","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"pipelines.openshift.io","kind":"GitopsService","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"gitops-operator","version":"1.8.0"}}]}'
+    operatorframework.io/suggested-namespace: openshift-gitops-operator
+    operators.openshift.io/infrastructure-features: '["disconnected"]'
+    operators.operatorframework.io/builder: operator-sdk-v1.10.0+git
+    operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
+    repository: https://github.com/redhat-developer/gitops-operator
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    support: Red Hat
+  creationTimestamp: "2023-11-21T00:17:10Z"
+  generateName: openshift-gitops-operator-controller-manager-cfc866685-
+  labels:
+    control-plane: gitops-operator
+    pod-template-hash: cfc866685
+  name: openshift-gitops-operator-controller-manager-cfc866685-mjs6t
+  namespace: openshift-gitops-operator
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: openshift-gitops-operator-controller-manager-cfc866685
+    uid: 379a15e2-323c-4e01-9311-dceeeb57e744
+  resourceVersion: "147392"
+  uid: b37c0301-3e78-430f-bb09-30cecdb78513
+spec:
+  containers:
+  - args:
+    - --health-probe-bind-address=:8081
+    - --metrics-bind-address=127.0.0.1:8080
+    - --leader-elect
+    command:
+    - /usr/local/bin/manager
+    env:
+    - name: ARGOCD_CLUSTER_CONFIG_NAMESPACES
+      value: openshift-gitops
+    - name: OPERATOR_NAME
+      value: gitops-operator
+    - name: ENABLE_CONVERSION_WEBHOOK
+      value: "true"
+    - name: OPERATOR_CONDITION_NAME
+      value: gitops-operator.v1.8.0
+    image: registry.build05.ci.openshift.org/ci-op-13ljzwi6/pipeline@sha256:e3f37879793a06c3475043d6d60cc03d1918a4f039dd099065ca1ffbbd54b28d
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 8081
+        scheme: HTTP
+      initialDelaySeconds: 15
+      periodSeconds: 20
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: manager
+    ports:
+    - containerPort: 9443
+      name: webhook-server
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /readyz
+        port: 8081
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000670000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /apiserver.local.config/certificates
+      name: apiservice-cert
+    - mountPath: /tmp/k8s-webhook-server/serving-certs
+      name: webhook-cert
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-hlkm8
+      readOnly: true
+  - args:
+    - --secure-listen-address=0.0.0.0:8443
+    - --upstream=http://127.0.0.1:8080
+    - --tls-cert-file=/etc/tls/private/tls.crt
+    - --tls-private-key-file=/etc/tls/private/tls.key
+    - --logtostderr=true
+    - --allow-paths=/metrics
+    - --http2-disable
+    env:
+    - name: OPERATOR_CONDITION_NAME
+      value: gitops-operator.v1.8.0
+    image: registry.redhat.io/openshift4/ose-kube-rbac-proxy:v4.13
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 8443
+      name: metrics
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 500m
+        memory: 128Mi
+      requests:
+        cpu: 1m
+        memory: 15Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+      runAsUser: 1000670000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: kube-rbac-proxy-tls
+      readOnly: true
+    - mountPath: /apiserver.local.config/certificates
+      name: apiservice-cert
+    - mountPath: /tmp/k8s-webhook-server/serving-certs
+      name: webhook-cert
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-hlkm8
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  imagePullSecrets:
+  - name: openshift-gitops-operator-controller-manager-dockercfg-92f42
+  nodeName: ip-10-0-133-24.ec2.internal
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000670000
+    runAsNonRoot: true
+    seLinuxOptions:
+      level: s0:c26,c10
+    seccompProfile:
+      type: RuntimeDefault
+  serviceAccount: openshift-gitops-operator-controller-manager
+  serviceAccountName: openshift-gitops-operator-controller-manager
+  terminationGracePeriodSeconds: 10
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  volumes:
+  - name: kube-rbac-proxy-tls
+    secret:
+      defaultMode: 420
+      secretName: kube-rbac-proxy-tls
+  - name: apiservice-cert
+    secret:
+      defaultMode: 420
+      items:
+      - key: tls.crt
+        path: apiserver.crt
+      - key: tls.key
+        path: apiserver.key
+      secretName: openshift-gitops-operator-controller-manager-service-cert
+  - name: webhook-cert
+    secret:
+      defaultMode: 420
+      items:
+      - key: tls.crt
+        path: tls.crt
+      - key: tls.key
+        path: tls.key
+      secretName: openshift-gitops-operator-controller-manager-service-cert
+  - name: kube-api-access-hlkm8
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+      - configMap:
+          items:
+          - key: service-ca.crt
+            path: service-ca.crt
+          name: openshift-service-ca.crt
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-11-21T00:17:10Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-11-21T00:17:49Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-11-21T00:17:49Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-11-21T00:17:10Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://894b327890cc7bda24c8ba2f2bf7285af872a71f56ad20dfcefc64742a989f2a
+    image: registry.redhat.io/openshift4/ose-kube-rbac-proxy:v4.13
+    imageID: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:e33874a51971a90917cf437fc6cbeea1da569ba07217f66f1bba96d594f58aed
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-11-21T00:17:48Z"
+  - containerID: cri-o://63dc54d2e597e45a2400291f8ed89bbb886a2776c4e1bd6330711aaddf22c665
+    image: registry.build05.ci.openshift.org/ci-op-13ljzwi6/pipeline@sha256:e3f37879793a06c3475043d6d60cc03d1918a4f039dd099065ca1ffbbd54b28d
+    imageID: registry.build05.ci.openshift.org/ci-op-13ljzwi6/pipeline@sha256:d7f77cb4c6c5df5d3d4220d4055f47227e19fc0090afe1cdaa5ddd89e039631f
+    lastState: {}
+    name: manager
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-11-21T00:17:30Z"
+  hostIP: 10.0.133.24
+  phase: Running
+  podIP: 10.129.2.12
+  podIPs:
+  - ip: 10.129.2.12
+  qosClass: Burstable
+  startTime: "2023-11-21T00:17:10Z"
++ subscription=gitops-operator-
+++ oc get subscription --all-namespaces
+++ grep gitops-operator-
+++ head -1
+++ awk '{print $2}'
++ oc get subscription gitops-operator-v1-8-0-sub -n openshift-gitops-operator
+NAME                         PACKAGE           SOURCE                    CHANNEL
+gitops-operator-v1-8-0-sub   gitops-operator   gitops-operator-catalog   operator-sdk-run-bundle
++ oc wait --for=condition=Ready -n openshift-gitops pod --timeout=15m -l 'app.kubernetes.io/name in (cluster,kam,openshift-gitops-application-controller,openshift-gitops-applicationset-controller,openshift-gitops-dex-server,openshift-gitops-redis,openshift-gitops-repo-server,openshift-gitops-server)'
+pod/cluster-c978cf99c-5ktfr condition met
+pod/kam-6f4689ff84-b59tf condition met
+pod/openshift-gitops-application-controller-0 condition met
+pod/openshift-gitops-applicationset-controller-5f9c4678f5-6jd6z condition met
+pod/openshift-gitops-dex-server-7d558d46cd-dh7f7 condition met
+pod/openshift-gitops-redis-66b75c5d9b-vbg85 condition met
+pod/openshift-gitops-repo-server-7cff4fcb69-2kqvk condition met
+pod/openshift-gitops-server-64c7b6846b-hxjhs condition met
++ oc create ns test-argocd
+namespace/test-argocd created
++ cat
++ oc apply -f -
+Warning: ArgoCD v1alpha1 version is deprecated and will be converted to v1beta1 automatically. Moving forward, please use v1beta1 as the ArgoCD API version.
+argocd.argoproj.io/argocd created
++ sleep 60s
++ oc get pods -n test-argocd
+NAME                                  READY   STATUS    RESTARTS   AGE
+argocd-application-controller-0       1/1     Running   0          59s
+argocd-redis-6748d8f75c-z9k5q         1/1     Running   0          59s
+argocd-repo-server-6579d94959-csgbq   1/1     Running   0          59s
+argocd-server-8479675dd8-8x7s7        1/1     Running   0          59s
++ oc wait --for=condition=Ready -n test-argocd pod --timeout=15m -l 'app.kubernetes.io/name in (argocd-application-controller,argocd-redis,argocd-repo-server,argocd-server)'
+pod/argocd-application-controller-0 condition met
+pod/argocd-redis-6748d8f75c-z9k5q condition met
+pod/argocd-repo-server-6579d94959-csgbq condition met
+pod/argocd-server-8479675dd8-8x7s7 condition met
++ echo '>> Running tests on prow'
+>> Running tests on prow
+2023/11/21 00:19:27 kutt-test config testdirs is overridden with args: [ test/openshift/e2e/ignore-tests/parallel ]
+=== RUN   kuttl
+    harness.go:460: starting setup
+    harness.go:251: running tests using configured kubeconfig.
+I1121 00:19:28.356743      30 request.go:655] Throttling request took 1.035551449s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/machine.openshift.io/v1beta1?timeout=32s
+    harness.go:356: running tests
+    harness.go:74: going to run test suite with timeout of 1200 seconds for each step
+    harness.go:368: testsuite: test/openshift/e2e/ignore-tests/parallel has 3 tests
+=== RUN   kuttl/harness
+=== RUN   kuttl/harness/1-009_validate-manage-other-namespace
+=== PAUSE kuttl/harness/1-009_validate-manage-other-namespace
+=== RUN   kuttl/harness/1-055_validate_notification_controller
+=== PAUSE kuttl/harness/1-055_validate_notification_controller
+=== RUN   kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+=== PAUSE kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-009_validate-manage-other-namespace | Ignoring README.md as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:19:32 | 1-055_validate_notification_controller | Ignoring errors.yaml as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-009_validate-manage-other-namespace | Ignoring errors.yaml as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:19:32 | 1-055_validate_notification_controller | Creating namespace: kuttl-test-enormous-pig
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:19:32 | 1-068_validate_redis_secure_comm_autotls_no_ha | Creating namespace: kuttl-test-unbiased-earwig
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-009_validate-manage-other-namespace | Creating namespace: kuttl-test-allowing-serval
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:19:32 | 1-055_validate_notification_controller/1-install | starting test step 1-install
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:19:32 | 1-068_validate_redis_secure_comm_autotls_no_ha/1-install | starting test step 1-install
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-009_validate-manage-other-namespace/1-install | starting test step 1-install
+Warning: ArgoCD v1alpha1 version is deprecated and will be converted to v1beta1 automatically. Moving forward, please use v1beta1 as the ArgoCD API version.
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:19:34 | 1-055_validate_notification_controller/1-install | ArgoCD:kuttl-test-enormous-pig/example-argocd created
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:19:37 | 1-068_validate_redis_secure_comm_autotls_no_ha/1-install | ArgoCD:kuttl-test-unbiased-earwig/argocd created
+I1121 00:19:38.382031      30 request.go:655] Throttling request took 1.245080281s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/node.k8s.io/v1?timeout=32s
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:19:39 | 1-009_validate-manage-other-namespace/1-install | Namespace:/test-1-9-custom created
+    logger.go:42: 00:19:39 | 1-009_validate-manage-other-namespace/1-install | ArgoCD:kuttl-test-allowing-serval/argocd created
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:20:05 | 1-055_validate_notification_controller/1-install | test step completed 1-install
+    logger.go:42: 00:20:05 | 1-055_validate_notification_controller/2-enable_notification | starting test step 2-enable_notification
+I1121 00:20:07.045674      30 request.go:655] Throttling request took 1.043236944s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/cloudcredential.openshift.io/v1?timeout=32s
+    logger.go:42: 00:20:08 | 1-055_validate_notification_controller/2-enable_notification | ArgoCD:kuttl-test-enormous-pig/example-argocd updated
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:20:09 | 1-068_validate_redis_secure_comm_autotls_no_ha/1-install | test step completed 1-install
+    logger.go:42: 00:20:09 | 1-068_validate_redis_secure_comm_autotls_no_ha/2-enable_autotls | starting test step 2-enable_autotls
+    logger.go:42: 00:20:09 | 1-068_validate_redis_secure_comm_autotls_no_ha/2-enable_autotls | running command: [sh -c set -e
+        
+        oc patch argocds.argoproj.io argocd --type=merge -p '{"spec":{"redis":{"autotls":"openshift"}}}' -n $NAMESPACE
+        ]
+    logger.go:42: 00:20:09 | 1-068_validate_redis_secure_comm_autotls_no_ha/2-enable_autotls | argocd.argoproj.io/argocd patched
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:12 | 1-009_validate-manage-other-namespace/1-install | test step completed 1-install
+    logger.go:42: 00:20:12 | 1-009_validate-manage-other-namespace/2-label-namespace | starting test step 2-label-namespace
+    logger.go:42: 00:20:12 | 1-009_validate-manage-other-namespace/2-label-namespace | running command: [sh -c kubectl label ns test-1-9-custom argocd.argoproj.io/managed-by=$NAMESPACE --overwrite]
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:20:12 | 1-055_validate_notification_controller/2-enable_notification | test step completed 2-enable_notification
+    logger.go:42: 00:20:12 | 1-055_validate_notification_controller/3-disable_notification | starting test step 3-disable_notification
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:12 | 1-009_validate-manage-other-namespace/2-label-namespace | namespace/test-1-9-custom labeled
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:20:14 | 1-055_validate_notification_controller/3-disable_notification | ArgoCD:kuttl-test-enormous-pig/example-argocd updated
+    logger.go:42: 00:20:14 | 1-055_validate_notification_controller/3-disable_notification | test step completed 3-disable_notification
+    logger.go:42: 00:20:14 | 1-055_validate_notification_controller/4-check | starting test step 4-check
+I1121 00:20:18.049024      30 request.go:655] Throttling request took 1.040983957s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/metrics.k8s.io/v1beta1?timeout=32s
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:19 | 1-009_validate-manage-other-namespace/2-label-namespace | test step completed 2-label-namespace
+    logger.go:42: 00:20:19 | 1-009_validate-manage-other-namespace/3-check-secret | starting test step 3-check-secret
+    logger.go:42: 00:20:19 | 1-009_validate-manage-other-namespace/3-check-secret | running command: [sh -c namespaces=$(oc get secret -n $NAMESPACE argocd-default-cluster-config -o jsonpath='{.data.namespaces}' | base64 -d)
+        if test "$namespaces" != "$NAMESPACE,test-1-9-custom"; then
+          echo "Assertion for cluster secret failed!"
+          exit 1
+        fi
+        exit 0
+        ]
+=== CONT  kuttl/harness/1-055_validate_notification_controller
+    logger.go:42: 00:20:19 | 1-055_validate_notification_controller/4-check | test step completed 4-check
+    logger.go:42: 00:20:19 | 1-055_validate_notification_controller | skipping kubernetes event logging
+    logger.go:42: 00:20:19 | 1-055_validate_notification_controller | Deleting namespace: kuttl-test-enormous-pig
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:21 | 1-009_validate-manage-other-namespace/3-check-secret | test step completed 3-check-secret
+    logger.go:42: 00:20:21 | 1-009_validate-manage-other-namespace/4-create-application | starting test step 4-create-application
+    logger.go:42: 00:20:24 | 1-009_validate-manage-other-namespace/4-create-application | Application:kuttl-test-allowing-serval/test-1-9-custom created
+    logger.go:42: 00:20:39 | 1-009_validate-manage-other-namespace/4-create-application | test step completed 4-create-application
+    logger.go:42: 00:20:39 | 1-009_validate-manage-other-namespace/5-unlabel-namespace | starting test step 5-unlabel-namespace
+    logger.go:42: 00:20:39 | 1-009_validate-manage-other-namespace/5-unlabel-namespace | running command: [sh -c kubectl label ns test-1-9-custom argocd.argoproj.io/managed-by-]
+    logger.go:42: 00:20:39 | 1-009_validate-manage-other-namespace/5-unlabel-namespace | namespace/test-1-9-custom unlabeled
+    logger.go:42: 00:20:39 | 1-009_validate-manage-other-namespace/5-unlabel-namespace | running command: [sh -c sleep 5]
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:20:40 | 1-068_validate_redis_secure_comm_autotls_no_ha/2-enable_autotls | test step completed 2-enable_autotls
+    logger.go:42: 00:20:40 | 1-068_validate_redis_secure_comm_autotls_no_ha/3-check_secret | starting test step 3-check_secret
+    logger.go:42: 00:20:40 | 1-068_validate_redis_secure_comm_autotls_no_ha/3-check_secret | running command: [sh -c set -e
+        secret_type="$(oc get secrets argocd-operator-redis-tls -n $NAMESPACE --template '{{.type}}')"
+        secret_len="$(oc get secrets argocd-operator-redis-tls -n $NAMESPACE --template '{{len .data}}')"
+        expected_secret_type="kubernetes.io/tls"
+        expected_secret_len=2
+        
+        if test ${secret_type} != ${expected_secret_type}; then
+          echo "argocd-operator-redis-tls secret type is ${secret_type} and should be ${expected_secret_type}"
+          exit 1
+        fi
+        if test ${secret_len} != ${expected_secret_len}; then
+          echo "argocd-operator-redis-tls secret length is ${secret_len} and should be ${expected_secret_len}"
+          exit 1
+        fi
+        ]
+I1121 00:20:41.978833      30 request.go:655] Throttling request took 1.046069024s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/storage.k8s.io/v1?timeout=32s
+    logger.go:42: 00:20:43 | 1-068_validate_redis_secure_comm_autotls_no_ha/3-check_secret | test step completed 3-check_secret
+    logger.go:42: 00:20:43 | 1-068_validate_redis_secure_comm_autotls_no_ha/4- | starting test step 4-
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:48 | 1-009_validate-manage-other-namespace/5-unlabel-namespace | test step completed 5-unlabel-namespace
+    logger.go:42: 00:20:48 | 1-009_validate-manage-other-namespace/6-check-secret | starting test step 6-check-secret
+    logger.go:42: 00:20:48 | 1-009_validate-manage-other-namespace/6-check-secret | running command: [sh -c namespaces=$(oc get secret -n $NAMESPACE argocd-default-cluster-config -o jsonpath='{.data.namespaces}' | base64 -d)
+        if test "$namespaces" != "$NAMESPACE"; then
+          echo "Assertion for cluster secret failed!"
+          exit 1
+        fi
+        exit 0
+        ]
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:20:48 | 1-068_validate_redis_secure_comm_autotls_no_ha/4- | test step completed 4-
+    logger.go:42: 00:20:48 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | starting test step 5-check_crt_files
+    logger.go:42: 00:20:48 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | running command: [sh -c set -e
+        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-server -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/server/tls/redis/tls.crt
+        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-repo-server -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/reposerver/tls/redis/tls.crt
+        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-redis -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/redis/tls/tls.crt
+        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-application-controller -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/controller/tls/redis/tls.crt
+        ]
+    logger.go:42: 00:20:48 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | /app/config/server/tls/redis/tls.crt
+    logger.go:42: 00:20:48 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | Defaulted container "argocd-repo-server" out of: argocd-repo-server, copyutil (init)
+    logger.go:42: 00:20:48 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | /app/config/reposerver/tls/redis/tls.crt
+    logger.go:42: 00:20:49 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | /app/config/redis/tls/tls.crt
+    logger.go:42: 00:20:49 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | /app/config/controller/tls/redis/tls.crt
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:50 | 1-009_validate-manage-other-namespace/6-check-secret | test step completed 6-check-secret
+    logger.go:42: 00:20:50 | 1-009_validate-manage-other-namespace/7-check | starting test step 7-check
+I1121 00:20:52.025989      30 request.go:655] Throttling request took 1.196088943s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/console.openshift.io/v1alpha1?timeout=32s
+=== CONT  kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha
+    logger.go:42: 00:20:55 | 1-068_validate_redis_secure_comm_autotls_no_ha/5-check_crt_files | test step completed 5-check_crt_files
+    logger.go:42: 00:20:55 | 1-068_validate_redis_secure_comm_autotls_no_ha | skipping kubernetes event logging
+    logger.go:42: 00:20:55 | 1-068_validate_redis_secure_comm_autotls_no_ha | Deleting namespace: kuttl-test-unbiased-earwig
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:20:55 | 1-009_validate-manage-other-namespace/7-check | test step completed 7-check
+    logger.go:42: 00:20:55 | 1-009_validate-manage-other-namespace/99-delete | starting test step 99-delete
+I1121 00:21:08.929827      30 request.go:655] Throttling request took 1.044837643s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/performance.openshift.io/v1alpha1?timeout=32s
+    logger.go:42: 00:21:10 | 1-009_validate-manage-other-namespace/99-delete | test step completed 99-delete
+    logger.go:42: 00:21:10 | 1-009_validate-manage-other-namespace | skipping kubernetes event logging
+    logger.go:42: 00:21:10 | 1-009_validate-manage-other-namespace | Deleting namespace: kuttl-test-allowing-serval
+=== CONT  kuttl
+    harness.go:402: run tests finished
+    harness.go:511: cleaning up
+    harness.go:568: removing temp folder: ""
+--- PASS: kuttl (103.04s)
+    --- PASS: kuttl/harness (0.00s)
+        --- PASS: kuttl/harness/1-055_validate_notification_controller (47.29s)
+        --- PASS: kuttl/harness/1-068_validate_redis_secure_comm_autotls_no_ha (83.52s)
+        --- PASS: kuttl/harness/1-009_validate-manage-other-namespace (98.13s)
+PASS
