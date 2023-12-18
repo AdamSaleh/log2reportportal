@@ -1,8 +1,10 @@
 package main
 
 import (
-	"os"
-	"testing"
+	"regexp"
+
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
 )
 
 const (
@@ -11,54 +13,15 @@ const (
 	envBuild = "__BUILD_MODE__"
 )
 
-func resetEnv() {
-	// Unset all environment variables
-	os.Unsetenv(envProd)
-	os.Unsetenv(envDebug)
-	os.Unsetenv(envBuild)
-}
+var _ = Describe("DefaultLines and getMatches", func() {
+	dl := &DefaultLines{}
 
-func TestMain(m *testing.M) {
-	// Run all tests, unset env variables, and exit
-	resetEnv()
-	val := m.Run()
-	resetEnv()
-	os.Exit(val)
-}
-
-func TestMainMethod(_ *testing.T) {
-	main()
-}
-
-func dirtyCheck(t *testing.T, val01, val02 bool) {
-	t.Helper()
-
-	if val01 != val02 {
-		t.Errorf("Values don't match: (%v, %v)", val01, val02)
-	}
-}
-
-func TestFirst(t *testing.T) {
-	resetEnv()
-	dirtyCheck(t, firstCheck(), false) // no variable should be detected
-
-	os.Setenv(envProd, "production")
-	dirtyCheck(t, firstCheck(), true) // detect `production` mode
-
-	resetEnv()
-	os.Setenv(envDebug, "debug")
-	dirtyCheck(t, firstCheck(), true) // detect `debug` mode
-}
-
-func TestSecond(t *testing.T) {
-	resetEnv()
-	dirtyCheck(t, secondCheck(), false) // no variable should be detected
-
-	resetEnv()
-	os.Setenv(envBuild, "production")
-	dirtyCheck(t, secondCheck(), true) // detect `production` mode!
-
-	resetEnv()
-	os.Setenv(envBuild, "debug")
-	dirtyCheck(t, secondCheck(), true) // detect `debug` mode!
-}
+	DescribeTable("Matching withGetMatches", func(r, line string, expected map[string]string) {
+		re := regexp.MustCompile(r)
+		actual := getMatches(re, line)
+		Expect(actual).To(Equal(expected))
+	},
+		Entry(dl.reEND, "--- PASS: TestCreateAndUseAccount (5.56s)", map[string]string{"name": "TestCreateAndUseAccount", "test": "PASS", "time": "5.56"}),
+		Entry(dl.reSTAMP, `  startTime: "2023-11-21T00:17:10Z"`, map[string]string{"startDate": "2023-11-21"}),
+	)
+})
