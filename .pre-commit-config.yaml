@@ -18,7 +18,7 @@ repos:
 
       # Implicit minor corrections to files
       - id: end-of-file-fixer       # ensure all files end with a new line
-      - id: trailing-whitespace     # trim trailing whitespaces
+      #- id: trailing-whitespace     # trim trailing whitespaces
 
       # Good practices for executables/scripts
       - id: check-executables-have-shebangs       # non-binary executables have shebang
