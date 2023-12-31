@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-
 	"regexp"
 	"strconv"
 	"time"
@@ -17,14 +16,14 @@ import (
 
 type RPLaunch struct {
 	Name      string `json:"name,omitempty"`
+	UUID      string `json:"uuid,omitempty"`
 	StartTime int    `json:"startTime,omitempty"`
 	EndTime   int    `json:"endTime,omitempty"`
-	Uuid      string `json:"uuid,omitempty"`
-	Id        int    `json:"id,omitempty"`
+	ID        int    `json:"id,omitempty"`
 }
 
-func (i *RPLaunch) setUuid(uuid string) {
-	i.Uuid = uuid
+func (i *RPLaunch) setUUID(uuid string) {
+	i.UUID = uuid
 }
 
 type Launches struct {
@@ -32,110 +31,111 @@ type Launches struct {
 }
 
 type RPWithUUID interface {
-	setUuid(uuid string)
+	setUUID(uuid string)
 }
 
 type RPItem struct {
 	Name        string `json:"name,omitempty"`
-	StartTime   int    `json:"startTime,omitempty"`
 	Type        string `json:"type,omitempty"`
-	LaunchUuid  string `json:"launchUuid"`
-	EndTime     int    `json:"endTime,omitempty"`
+	LaunchUUID  string `json:"launchUuid"`
 	Description string `json:"description"`
-	Uuid        string `json:"uuid,omitempty"`
-	Id          int    `json:"id,omitempty"`
+	UUID        string `json:"uuid,omitempty"`
+	StartTime   int    `json:"startTime,omitempty"`
+	EndTime     int    `json:"endTime,omitempty"`
+	ID          int    `json:"id,omitempty"`
 }
 
-func (i *RPItem) setUuid(uuid string) {
-	i.Uuid = uuid
+func (i *RPItem) setUUID(uuid string) {
+	i.UUID = uuid
 }
 
 type RPFinishItem struct {
-	EndTime     int    `json:"endTime"`
 	Type        string `json:"type"`
-	LaunchUuid  string `json:"launchUuid"`
+	LaunchUUID  string `json:"launchUuid"`
 	Description string `json:"description"`
 	Status      string `json:"status"`
+	EndTime     int    `json:"endTime"`
 }
 
 type RPLog struct {
-	LaunchUuid string `json:"launchUuid"`
+	LaunchUUID string `json:"launchUuid"`
 	Time       string `json:"time"`
-	ItemUuid   string `json:"itemUuid"`
+	ItemUUID   string `json:"itemUuid"`
 	Message    string `json:"message"`
 	Level      string `json:"level"`
-	Uuid       string `json:"uuid,omitempty"`
+	UUID       string `json:"uuid,omitempty"`
 }
 
-func (i *RPLog) setUuid(uuid string) {
-	i.Uuid = uuid
+func (i *RPLog) setUUID(uuid string) {
+	i.UUID = uuid
 }
 
-type ResultId struct {
-	Id string `json:"id"`
+type ResultID struct {
+	ID string `json:"id"`
 }
 
 type RPLogger struct {
-	launch    *RPLaunch
-	Tests     []*RPItem
 	project   string
-	client    *resty.Client
 	authToken string
-	url       string
+	launch    *RPLaunch
+	client    *resty.Client
+	Tests     []*RPItem
 }
 
-func (rp *RPLogger) requestWithAuth() *resty.Request {
-	return rp.client.R().SetAuthToken(rp.authToken)
+func (p *RPLogger) requestWithAuth() *resty.Request {
+	return p.client.R().SetAuthToken(p.authToken)
 }
 
-func (rp *RPLogger) gPortalItem(apiPath string, id string, item interface{}) error {
+func (p *RPLogger) gPortalItem(apiPath, id string, item interface{}) error {
 	url := fmt.Sprintf("/%s/%s", apiPath, id)
-	_, err := rp.requestWithAuth().
+	_, err := p.requestWithAuth().
 		SetResult(item).
 		Get(url)
 	if err != nil {
-		panic(fmt.Errorf("Error:%w\n", err))
+		panic(fmt.Errorf("Error:%w", err))
 	}
-	return nil
+	return fmt.Errorf("Error:%w", err)
 }
-func (rp *RPLogger) uPortalItem(apiPath string, id string, item interface{}) error {
 
+func (p *RPLogger) uPortalItem(apiPath, id string, item interface{}) {
 	url := fmt.Sprintf("/%s/%s", apiPath, id)
-	_, err := rp.requestWithAuth().
+	_, err := p.requestWithAuth().
 		SetBody(item).
 		Put(url)
 	if err != nil {
-		panic(fmt.Errorf("Error:%w\n", err))
+		panic(fmt.Errorf("Error:%w", err))
 	}
-	return nil
-
-}
-func (rp *RPLogger) cPortalItem(apiPath string, item interface{}) error {
-	resultId := &ResultId{}
-	_, err := rp.requestWithAuth().
-		SetBody(item).
-		SetResult(&resultId).
-		Post(apiPath)
-	if err != nil {
-		panic(fmt.Errorf("Error:%w\n", err))
-	}
-
-	rp.gPortalItem(apiPath, resultId.Id, item)
-	return nil
-
 }
 
-func (rp *RPLogger) cAsyncPortalItem(apiPath string, item interface{}) string {
-	resultId := &ResultId{}
-	_, err := rp.requestWithAuth().
+func (p *RPLogger) cPortalItem(apiPath string, item interface{}) error {
+	resultID := &ResultID{}
+	_, err := p.requestWithAuth().
 		SetBody(item).
-		SetResult(&resultId).
+		SetResult(&resultID).
 		Post(apiPath)
 	if err != nil {
-		panic(fmt.Errorf("Error:%w\n", err))
+		panic(fmt.Errorf("Error:%w", err))
 	}
 
-	return resultId.Id
+	err = p.gPortalItem(apiPath, resultID.ID, item)
+	if err != nil {
+		panic(fmt.Errorf("Error:%w", err))
+	}
+
+	return fmt.Errorf("Error:%w", err)
+}
+
+func (p *RPLogger) cAsyncPortalItem(apiPath string, item interface{}) string {
+	resultID := &ResultID{}
+	_, err := p.requestWithAuth().
+		SetBody(item).
+		SetResult(&resultID).
+		Post(apiPath)
+	if err != nil {
+		panic(fmt.Errorf("Error:%w", err))
+	}
+
+	return resultID.ID
 }
 
 func NewRPLogger(client *resty.Client, token, project string) *RPLogger {
@@ -168,45 +168,53 @@ func (p *RPLogger) getCase(name string) int {
 func toUnix(startTime string) int {
 	tt, err := time.Parse(time.RFC3339, startTime)
 	if err != nil {
-		panic(fmt.Errorf("Error:%w\n", err))
+		panic(fmt.Errorf("Error:%w", err))
 	}
-	return int(tt.Unix()) * 1000
+	return int(tt.Unix()) * 1000 // api needs millisecond instead of seconds
 }
 
-func (p *RPLogger) Launch(name, startTime string) {
+func (p *RPLogger) EnsureLaunch(name, startTime string) {
+	if p.getLaunch(name) >= 0 {
+		return
+	}
 	l := &RPLaunch{Name: name, StartTime: toUnix(startTime)}
-	p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), l)
+	err := p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), l)
+	if err != nil {
+		panic(fmt.Errorf("Error:%w", err))
+	}
 	p.launch = l
 }
 
-func (p *RPLogger) StartTest(name, startTime string) {
+func (p *RPLogger) EnsureTest(name, startTime string) {
+	if p.getCase(name) >= 0 {
+		return
+	}
 	t := toUnix(startTime)
-	uuid := p.launch.Uuid
-	ts := &RPItem{Name: name, StartTime: t, Type: "test", LaunchUuid: uuid, Description: name}
-	ts.Uuid = p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/item", p.project), ts)
+	uuid := p.launch.UUID
+	ts := &RPItem{Name: name, StartTime: t, Type: "test", LaunchUUID: uuid, Description: name}
+	ts.UUID = p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/item", p.project), ts)
 	p.Tests = append(p.Tests, ts)
 }
+
 func (p *RPLogger) AddLine(name, startTime, level, message string) {
 	fmt.Printf("LOG: %s %s %s %s", name, startTime, level, message)
 	currentCase := p.getCase(name)
 	fmt.Printf("LOG:CASE %v", currentCase)
 	l := &RPLog{
-		LaunchUuid: p.launch.Uuid,
-		ItemUuid:   p.Tests[currentCase].Uuid,
+		LaunchUUID: p.launch.UUID,
+		ItemUUID:   p.Tests[currentCase].UUID,
 		Time:       startTime,
 		Message:    message,
 		Level:      level,
 	}
 	fmt.Printf("LOG:CASE %v", l)
 	p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/log/entry", p.project), l)
-
 }
 
-func (p *RPLogger) FinnishTest(name, result, time string) {
-	fmt.Printf("Finishing:%s %v\n", name, result)
-	value, err := strconv.ParseFloat(time, 32)
+func (p *RPLogger) FinnishTest(name, result, t string) {
+	value, err := strconv.ParseFloat(t, 32)
 	if err != nil {
-		panic(fmt.Errorf("Error:%w\n", err))
+		panic(fmt.Errorf("Error:%w", err))
 	}
 	currentCase := p.getCase(name)
 	if currentCase < 0 {
@@ -215,7 +223,7 @@ func (p *RPLogger) FinnishTest(name, result, time string) {
 	ts := p.Tests[currentCase]
 	f := &RPFinishItem{
 		EndTime:    ts.StartTime + int(value)*1000,
-		LaunchUuid: ts.LaunchUuid,
+		LaunchUUID: ts.LaunchUUID,
 		Status:     "passed",
 	}
 	if result == "FAIL" {
@@ -224,10 +232,11 @@ func (p *RPLogger) FinnishTest(name, result, time string) {
 	if result == "SKIP" {
 		f.Status = "skipped"
 	}
-	p.uPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), ts.Uuid, f)
+	p.uPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), ts.UUID, f)
 }
-func (p *RPLogger) Finish(time string) {
-	p.uPortalItem(fmt.Sprintf("api/v1/%s/launch/%s/finish", p.project, p.launch.Uuid), "", &RPItem{EndTime: toUnix(time)})
+
+func (p *RPLogger) Finish(t string) {
+	p.uPortalItem(fmt.Sprintf("api/v1/%s/launch/%s/finish", p.project, p.launch.UUID), "", &RPItem{EndTime: toUnix(t)})
 }
 
 func getMatches(re *regexp.Regexp, str string) map[string]string {
@@ -281,7 +290,7 @@ func (l *DefaultLines) rePAUSE() string {
 
 type PatternActions struct {
 	pattern *regexp.Regexp
-	actions []func(s map[string]string, m map[string]string) map[string]string
+	actions []func(s, m map[string]string) map[string]string
 }
 
 type StateMachine struct {
@@ -293,7 +302,7 @@ func mkMachine(initialState map[string]string) *StateMachine {
 	return &StateMachine{state: initialState, patternToActions: []*PatternActions{}}
 }
 
-func (m *StateMachine) pattern(r string, a ...func(s map[string]string, m map[string]string) map[string]string) *StateMachine {
+func (m *StateMachine) pattern(r string, a ...func(s, m map[string]string) map[string]string) *StateMachine {
 	rx := regexp.MustCompile(r)
 
 	m.patternToActions = append(m.patternToActions, &PatternActions{pattern: rx, actions: a})
@@ -311,8 +320,7 @@ func (m *StateMachine) feed(line string) {
 	}
 }
 
-func m_cp(dst map[string]string, src map[string]string) map[string]string {
-	//fmt.Printf("%v %v \n", dst, src)
+func mapCopy(dst, src map[string]string) map[string]string {
 	maps.Copy(dst, src)
 	return dst
 }
@@ -320,84 +328,68 @@ func m_cp(dst map[string]string, src map[string]string) map[string]string {
 type TestReportBuilder interface {
 	getLaunch(name string) int
 	getCase(name string) int
-	StartTest(name, startTime string)
+	EnsureTest(name, startTime string)
 	AddLine(name, startTime, level, message string)
 	FinnishTest(name, result, time string)
 	Finish(time string)
-	Launch(name, startTime string)
+	EnsureLaunch(name, startTime string)
 }
 
-func processLinear(lg TestReportBuilder, lname, lproject string, filePipe *script.Pipe) {
+func processLinear(lg TestReportBuilder, lname string, filePipe *script.Pipe) {
 	r := &DefaultLines{}
-	i := 0
-	m := mkMachine(map[string]string{
-		"test":      "",
-		"level":     "",
-		"startDate": "",
-		"time":      "",
-		"launch":    "",
-	}).
-		pattern(r.reSTAMP(), m_cp).
-		pattern(r.reCONT(), m_cp).
-		pattern(r.reRUN(), m_cp).
-		pattern(r.reLOG(),
-			m_cp,
-			func(s map[string]string, m map[string]string) map[string]string {
-				if s["test"] == "" {
-					return s
+	m := mkMachine(map[string]string{"test": "", "level": "", "startDate": "", "time": "", "launch": ""}).
+		pattern(r.reSTAMP(), mapCopy).
+		pattern(r.reCONT(), mapCopy).
+		pattern(r.reRUN(), mapCopy).
+		pattern(r.reLOG(), mapCopy,
+			func(s, m map[string]string) map[string]string {
+				if s["test"] != "" {
+					s["time"] = fmt.Sprintf("%s%sT%sZ", s["startDate"], m["date"], m["timestamp"])
+					lg.EnsureLaunch(lname, s["time"])
+					lg.EnsureTest(s["test"], s["time"])
+					lg.AddLine(s["test"], s["time"], s["level"], m["msg"])
 				}
-				s["time"] = fmt.Sprintf("%s%sT%sZ", s["startDate"], m["date"], m["timestamp"])
-				if lg.getLaunch(lname) < 0 {
-					lg.Launch(lname, s["time"])
-				}
-				if lg.getCase(s["test"]) < 0 {
-					lg.StartTest(s["test"], s["time"])
-				}
-				lg.AddLine(s["test"], s["time"], s["level"], m["msg"])
 				return s
 			}).pattern(r.reEND(),
-		m_cp,
-		func(s map[string]string, m map[string]string) map[string]string {
-			if s["test"] == "" {
-				return s
+		mapCopy,
+		func(s, m map[string]string) map[string]string {
+			if s["test"] != "" {
+				lg.EnsureTest(s["test"], s["time"])
+				lg.FinnishTest(s["test"], m["result"], m["duration"])
 			}
-			if lg.getCase(s["test"]) < 0 {
-				lg.StartTest(s["test"], s["time"])
-			}
-			lg.FinnishTest(s["test"], m["result"], m["duration"])
 			return s
 		},
 	).pattern("(?P<line>^.*$)",
-		func(s map[string]string, m map[string]string) map[string]string {
+		func(s, m map[string]string) map[string]string {
 			if (s["test"] != "" && s["time"] != "") && s["level"] != "" {
-				if lg.getCase(s["test"]) < 0 {
-					lg.StartTest(s["test"], s["time"])
-				}
+				lg.EnsureTest(s["test"], s["time"])
 				lg.AddLine(s["test"], s["time"], s["level"], m["line"])
 			}
 			return s
 		},
 	)
-	filePipe.FilterLine(func(line string) string {
-		i++
-		//fmt.Printf("Processing line %v\n", i)
+	_, errPipe := filePipe.FilterLine(func(line string) string {
 		m.feed(line)
 		return line
 	}).String()
+	if errPipe != nil {
+		fmt.Println(errPipe)
+	}
 	lg.Finish(m.state["time"])
-
 }
 
-var reportName string
-var reportProject string
-var portalUrl string
-
 func main() {
+	var reportName string
+	var reportProject string
+	var portalURL string
+	var skipTLS bool
+
 	t := time.Now()
 	flag.StringVar(&reportName, "name", fmt.Sprintf("run%s", t.Format("20060102150405")), "name of the report")
 	flag.StringVar(&reportProject, "project", "gitops-adhoc", "project to upload to")
-	flag.StringVar(&portalUrl, "url", "https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com", "url of the report portal")
-
+	flag.StringVar(&portalURL, "url",
+		"https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com", "url of the report portal")
+	flag.BoolVar(&skipTLS, "skipTls", false, "skip TLS checks")
 	flag.Parse()
 
 	token, ok := os.LookupEnv("RP_TOKEN")
@@ -405,9 +397,9 @@ func main() {
 		panic("RP_TOKEN env var needs to be set to authenticate")
 	}
 	client := resty.New()
-	client.SetBaseURL(portalUrl)
-	client.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	client.SetBaseURL(portalURL)
+	client.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: skipTLS})
 	lg := NewRPLogger(client, token, reportProject)
 
-	processLinear(lg, reportName, reportProject, script.Stdin())
+	processLinear(lg, reportName, script.Stdin())
 }

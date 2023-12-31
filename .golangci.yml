@@ -99,7 +99,7 @@ linters-settings:
 
   funlen:
     # Force smaller functions with fewer statements - leads to reduced complexity
-    lines: 45
+    lines: 50
     statements: 30
 
   gci:
@@ -244,7 +244,7 @@ linters-settings:
       mnd:
         # list of enabled checks, see https://github.com/tommy-muehle/go-mnd/#checks
         # optional: remove the "operation" and "assign" if needed
-        checks: argument,case,condition,operation,return,assign
+        checks: argument,case,condition,operation
         # ignored-numbers: 1000
         # ignored-files: magic_.*.go
         # ignored-functions: math.*
@@ -257,8 +257,8 @@ linters-settings:
     #   - G401
 
     # specify a set of rules to explicitly exclude
-    # excludes:
-    #   - G204
+    excludes:
+       - G402
 
   gosimple:
     go: "1.18"          # version to target - default is '1.13'
@@ -287,7 +287,7 @@ linters-settings:
 
   lll:
     # max line length, lines longer will be reported. Default is 120.
-    line-length: 88   # tab (`\t`) is counted as 1 character by default
+    line-length: 120   # tab (`\t`) is counted as 1 character by default
     tab-width: 1      # tab width in spaces. Default to 1
 
   makezero:

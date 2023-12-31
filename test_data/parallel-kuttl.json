@@ -319,7 +319,7 @@
       ]
     }
   },
-  "finish": "2023-11-21T00:21:10Z",
-  "name": "TestName",
-  "start": "2023-11-21T00:19:32Z"
+  "finishStamp": "2023-11-21T00:21:10Z",
+  "launchName": "TestName",
+  "startStamp": "2023-11-21T00:19:32Z"
 }
