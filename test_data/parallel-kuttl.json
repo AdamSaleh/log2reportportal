@@ -1,0 +1,325 @@
+{
+  "cases": {
+    "1-009_validate-manage-other-namespace": {
+      "2023-11-21T00:19:32Z": [
+        {
+          "c": "StartTest"
+        },
+        {
+          "msg": " Ignoring README.md as it does not match file name regexp: ^(\\d+)-(?:[^\\.]+)(?:\\.yaml)?$"
+        },
+        {
+          "msg": " Ignoring errors.yaml as it does not match file name regexp: ^(\\d+)-(?:[^\\.]+)(?:\\.yaml)?$"
+        },
+        {
+          "msg": " Creating namespace: kuttl-test-allowing-serval"
+        },
+        {
+          "msg": " starting test step 1-install"
+        }
+      ],
+      "2023-11-21T00:19:39Z": [
+        {
+          "msg": " Namespace:/test-1-9-custom created"
+        },
+        {
+          "msg": " ArgoCD:kuttl-test-allowing-serval/argocd created"
+        }
+      ],
+      "2023-11-21T00:20:12Z": [
+        {
+          "msg": " test step completed 1-install"
+        },
+        {
+          "msg": " starting test step 2-label-namespace"
+        },
+        {
+          "msg": " running command: [sh -c kubectl label ns test-1-9-custom argocd.argoproj.io/managed-by=$NAMESPACE --overwrite]"
+        },
+        {
+          "msg": " namespace/test-1-9-custom labeled"
+        }
+      ],
+      "2023-11-21T00:20:19Z": [
+        {
+          "msg": " test step completed 2-label-namespace"
+        },
+        {
+          "msg": " starting test step 3-check-secret"
+        },
+        {
+          "msg": " running command: [sh -c namespaces=$(oc get secret -n $NAMESPACE argocd-default-cluster-config -o jsonpath='{.data.namespaces}' | base64 -d)"
+        }
+      ],
+      "2023-11-21T00:20:21Z": [
+        {
+          "msg": " test step completed 3-check-secret"
+        },
+        {
+          "msg": " starting test step 4-create-application"
+        }
+      ],
+      "2023-11-21T00:20:24Z": [
+        {
+          "msg": " Application:kuttl-test-allowing-serval/test-1-9-custom created"
+        }
+      ],
+      "2023-11-21T00:20:39Z": [
+        {
+          "msg": " test step completed 4-create-application"
+        },
+        {
+          "msg": " starting test step 5-unlabel-namespace"
+        },
+        {
+          "msg": " running command: [sh -c kubectl label ns test-1-9-custom argocd.argoproj.io/managed-by-]"
+        },
+        {
+          "msg": " namespace/test-1-9-custom unlabeled"
+        },
+        {
+          "msg": " running command: [sh -c sleep 5]"
+        }
+      ],
+      "2023-11-21T00:20:48Z": [
+        {
+          "msg": " test step completed 5-unlabel-namespace"
+        },
+        {
+          "msg": " starting test step 6-check-secret"
+        },
+        {
+          "msg": " running command: [sh -c namespaces=$(oc get secret -n $NAMESPACE argocd-default-cluster-config -o jsonpath='{.data.namespaces}' | base64 -d)"
+        }
+      ],
+      "2023-11-21T00:20:50Z": [
+        {
+          "msg": " test step completed 6-check-secret"
+        },
+        {
+          "msg": " starting test step 7-check"
+        }
+      ],
+      "2023-11-21T00:20:55Z": [
+        {
+          "msg": " test step completed 7-check"
+        },
+        {
+          "msg": " starting test step 99-delete"
+        }
+      ],
+      "2023-11-21T00:21:10Z": [
+        {
+          "msg": " test step completed 99-delete"
+        },
+        {
+          "msg": " skipping kubernetes event logging"
+        },
+        {
+          "msg": " Deleting namespace: kuttl-test-allowing-serval"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "98.13"
+        }
+      ]
+    },
+    "1-055_validate_notification_controller": {
+      "2023-11-21T00:19:32Z": [
+        {
+          "c": "StartTest"
+        },
+        {
+          "msg": " Ignoring errors.yaml as it does not match file name regexp: ^(\\d+)-(?:[^\\.]+)(?:\\.yaml)?$"
+        },
+        {
+          "msg": " Creating namespace: kuttl-test-enormous-pig"
+        },
+        {
+          "msg": " starting test step 1-install"
+        }
+      ],
+      "2023-11-21T00:19:34Z": [
+        {
+          "msg": " ArgoCD:kuttl-test-enormous-pig/example-argocd created"
+        }
+      ],
+      "2023-11-21T00:20:05Z": [
+        {
+          "msg": " test step completed 1-install"
+        },
+        {
+          "msg": " starting test step 2-enable_notification"
+        }
+      ],
+      "2023-11-21T00:20:08Z": [
+        {
+          "msg": " ArgoCD:kuttl-test-enormous-pig/example-argocd updated"
+        }
+      ],
+      "2023-11-21T00:20:12Z": [
+        {
+          "msg": " test step completed 2-enable_notification"
+        },
+        {
+          "msg": " starting test step 3-disable_notification"
+        }
+      ],
+      "2023-11-21T00:20:14Z": [
+        {
+          "msg": " ArgoCD:kuttl-test-enormous-pig/example-argocd updated"
+        },
+        {
+          "msg": " test step completed 3-disable_notification"
+        },
+        {
+          "msg": " starting test step 4-check"
+        }
+      ],
+      "2023-11-21T00:20:19Z": [
+        {
+          "msg": " test step completed 4-check"
+        },
+        {
+          "msg": " skipping kubernetes event logging"
+        },
+        {
+          "msg": " Deleting namespace: kuttl-test-enormous-pig"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "47.29"
+        }
+      ]
+    },
+    "1-068_validate_redis_secure_comm_autotls_no_ha": {
+      "2023-11-21T00:19:32Z": [
+        {
+          "c": "StartTest"
+        },
+        {
+          "msg": " Creating namespace: kuttl-test-unbiased-earwig"
+        },
+        {
+          "msg": " starting test step 1-install"
+        }
+      ],
+      "2023-11-21T00:19:37Z": [
+        {
+          "msg": " ArgoCD:kuttl-test-unbiased-earwig/argocd created"
+        }
+      ],
+      "2023-11-21T00:20:09Z": [
+        {
+          "msg": " test step completed 1-install"
+        },
+        {
+          "msg": " starting test step 2-enable_autotls"
+        },
+        {
+          "msg": " running command: [sh -c set -e"
+        },
+        {
+          "msg": " argocd.argoproj.io/argocd patched"
+        }
+      ],
+      "2023-11-21T00:20:40Z": [
+        {
+          "msg": " test step completed 2-enable_autotls"
+        },
+        {
+          "msg": " starting test step 3-check_secret"
+        },
+        {
+          "msg": " running command: [sh -c set -e"
+        }
+      ],
+      "2023-11-21T00:20:43Z": [
+        {
+          "msg": " test step completed 3-check_secret"
+        },
+        {
+          "msg": " starting test step 4-"
+        }
+      ],
+      "2023-11-21T00:20:48Z": [
+        {
+          "msg": " test step completed 4-"
+        },
+        {
+          "msg": " starting test step 5-check_crt_files"
+        },
+        {
+          "msg": " running command: [sh -c set -e"
+        },
+        {
+          "msg": " /app/config/server/tls/redis/tls.crt"
+        },
+        {
+          "msg": " Defaulted container \"argocd-repo-server\" out of: argocd-repo-server, copyutil (init)"
+        },
+        {
+          "msg": " /app/config/reposerver/tls/redis/tls.crt"
+        }
+      ],
+      "2023-11-21T00:20:49Z": [
+        {
+          "msg": " /app/config/redis/tls/tls.crt"
+        },
+        {
+          "msg": " /app/config/controller/tls/redis/tls.crt"
+        }
+      ],
+      "2023-11-21T00:20:55Z": [
+        {
+          "msg": " test step completed 5-check_crt_files"
+        },
+        {
+          "msg": " skipping kubernetes event logging"
+        },
+        {
+          "msg": " Deleting namespace: kuttl-test-unbiased-earwig"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "83.52"
+        }
+      ]
+    },
+    "kuttl": {
+      "2023-11-21T00:21:10Z": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "103.04"
+        }
+      ]
+    },
+    "kuttl/harness": {
+      "2023-11-21T00:21:10Z": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "0.00"
+        }
+      ]
+    }
+  },
+  "finish": "2023-11-21T00:21:10Z",
+  "name": "TestName",
+  "start": "2023-11-21T00:19:32Z"
+}

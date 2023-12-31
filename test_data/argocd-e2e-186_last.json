@@ -1,0 +1,4281 @@
+{
+  "cases": {
+    "TestAddHelmRepoInsecureSkipVerify": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.06"
+        }
+      ]
+    },
+    "TestAddOrphanedIgnore": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.02"
+        }
+      ]
+    },
+    "TestAddProjectDestination": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.92"
+        }
+      ]
+    },
+    "TestAddProjectDestinationWithName": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.96"
+        }
+      ]
+    },
+    "TestAddProjectSource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.06"
+        }
+      ]
+    },
+    "TestAddRemoveHelmRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "54.88"
+        }
+      ]
+    },
+    "TestAddRemovePublicRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.47"
+        }
+      ]
+    },
+    "TestAnnotationTrackingExtraResources": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.22"
+        }
+      ]
+    },
+    "TestAppCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.42"
+        }
+      ]
+    },
+    "TestAppCreationInOtherNamespace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.20"
+        }
+      ]
+    },
+    "TestAppCreationWithoutForceUpdate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.07"
+        }
+      ]
+    },
+    "TestAppDeletion": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.30"
+        }
+      ]
+    },
+    "TestAppLabels": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.98"
+        }
+      ]
+    },
+    "TestAppLogs": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestAppRollbackSuccessful": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.11"
+        }
+      ]
+    },
+    "TestAppWaitOperationInProgress": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.92"
+        }
+      ]
+    },
+    "TestAppWithSecrets": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestAutoSyncSelfHealDisabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.10"
+        }
+      ]
+    },
+    "TestAutoSyncSelfHealEnabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "16.68"
+        }
+      ]
+    },
+    "TestAutomaticallyNamingUnnamedHook": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestCMPDiscoverWithFileName": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestCMPDiscoverWithFindCommandWithEnv": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestCMPDiscoverWithFindGlob": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.78"
+        }
+      ]
+    },
+    "TestCMPDiscoverWithPluginName": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "5.21"
+        }
+      ]
+    },
+    "TestCMPWithSymlinkFiles": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "5.01"
+        }
+      ]
+    },
+    "TestCMPWithSymlinkFolder": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.89"
+        }
+      ]
+    },
+    "TestCMPWithSymlinkPartialFiles": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "4.50"
+        }
+      ]
+    },
+    "TestCRDStatusSubresourceAction": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.60"
+        }
+      ]
+    },
+    "TestCRDs": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "8.94"
+        }
+      ]
+    },
+    "TestCanAccessInsecureSSHRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.57"
+        }
+      ]
+    },
+    "TestCanAccessSSHRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "57.21"
+        }
+      ]
+    },
+    "TestCanAddAppFromClientCertRepoWithCredCfg": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "56.69"
+        }
+      ]
+    },
+    "TestCanAddAppFromInsecurePrivateRepoWithCredCfg": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "56.69"
+        }
+      ]
+    },
+    "TestCanAddAppFromPrivateRepoWithCredCfg": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "57.14"
+        }
+      ]
+    },
+    "TestCanAddAppFromPrivateRepoWithRepoCfg": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.87"
+        }
+      ]
+    },
+    "TestCanIGetLogsAllowNoSwitch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.11"
+        }
+      ]
+    },
+    "TestCanIGetLogsAllowSwitchOff": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.42"
+        }
+      ]
+    },
+    "TestCanIGetLogsAllowSwitchOn": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.76"
+        }
+      ]
+    },
+    "TestCanIGetLogsDenySwitchOn": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.24"
+        }
+      ]
+    },
+    "TestCannotAddAppFromClientCertRepoWithoutCfg": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.77"
+        }
+      ]
+    },
+    "TestCannotAddAppFromPrivateRepoWithoutCfg": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.74"
+        }
+      ]
+    },
+    "TestCannotSetInvalidPath": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.73"
+        }
+      ]
+    },
+    "TestCliAppCommand": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.77"
+        }
+      ]
+    },
+    "TestClusterAdd": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.70"
+        }
+      ]
+    },
+    "TestClusterAddAllowed": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.39"
+        }
+      ]
+    },
+    "TestClusterAddPermissionDenied": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.31"
+        }
+      ]
+    },
+    "TestClusterDelete": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "9.31"
+        }
+      ]
+    },
+    "TestClusterDeleteDenied": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.97"
+        }
+      ]
+    },
+    "TestClusterGeneratorWithLocalCluster": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "26.26"
+        }
+      ]
+    },
+    "TestClusterGeneratorWithLocalCluster/specify_local_cluster_by_name_field": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.13"
+        }
+      ]
+    },
+    "TestClusterGeneratorWithLocalCluster/specify_local_cluster_by_server_field": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.13"
+        }
+      ]
+    },
+    "TestClusterGet": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.83"
+        }
+      ]
+    },
+    "TestClusterList": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.76"
+        }
+      ]
+    },
+    "TestClusterListDenied": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.17"
+        }
+      ]
+    },
+    "TestClusterMatrixGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "14.50"
+        }
+      ]
+    },
+    "TestClusterMergeGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "14.50"
+        }
+      ]
+    },
+    "TestClusterNameInRestAPI": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.58"
+        }
+      ]
+    },
+    "TestClusterRoleBinding": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.54"
+        }
+      ]
+    },
+    "TestClusterURLInRestAPI": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.91"
+        }
+      ]
+    },
+    "TestCompareOptionIgnoreExtraneous": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.56"
+        }
+      ]
+    },
+    "TestComparisonFailsIfClusterNotAdded": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.44"
+        }
+      ]
+    },
+    "TestConfigMap": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "8.81"
+        }
+      ]
+    },
+    "TestCreateAndUseAccount": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.56"
+        }
+      ]
+    },
+    "TestCreateAndUseAccountCLI": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.25"
+        }
+      ]
+    },
+    "TestCreateAppInNotAllowedNamespace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.97"
+        }
+      ]
+    },
+    "TestCreateAppWithNoNameSpaceForGlobalResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "4.65"
+        }
+      ]
+    },
+    "TestCreateAppWithNoNameSpaceWhenRequired": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.14"
+        }
+      ]
+    },
+    "TestCreateAppWithNoNameSpaceWhenRequired2": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.38"
+        }
+      ]
+    },
+    "TestCreateDisableValidation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.83"
+        }
+      ]
+    },
+    "TestCreateFromPartialFile": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.72"
+        }
+      ]
+    },
+    "TestCreateRepositoryNonAdminUserPermissionDenied": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.60"
+        }
+      ]
+    },
+    "TestCreateRepositoryNonAdminUserWithWrongProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.66"
+        }
+      ]
+    },
+    "TestCreateRepositoryWithProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.53"
+        }
+      ]
+    },
+    "TestCustomApplicationFinalizers": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.59"
+        }
+      ]
+    },
+    "TestCustomApplicationFinalizersGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.10"
+        }
+      ]
+    },
+    "TestCustomToolSyncAndDiffLocal": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.64"
+        }
+      ]
+    },
+    "TestCustomToolWithEnv": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.90"
+        }
+      ]
+    },
+    "TestCustomToolWithGitCreds": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "57.33"
+        }
+      ]
+    },
+    "TestCustomToolWithGitCredsTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "57.50"
+        }
+      ]
+    },
+    "TestDeclarativeHappyApp": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.87"
+        }
+      ]
+    },
+    "TestDeclarativeHelm": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.26"
+        }
+      ]
+    },
+    "TestDeclarativeHelmInvalidValuesFile": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.88"
+        }
+      ]
+    },
+    "TestDeclarativeInvalidPath": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.94"
+        }
+      ]
+    },
+    "TestDeclarativeInvalidProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.04"
+        }
+      ]
+    },
+    "TestDeclarativeInvalidRepoURL": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.46"
+        }
+      ]
+    },
+    "TestDegradedDeploymentIsSucceededAndSynced": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.75"
+        }
+      ]
+    },
+    "TestDeleteAppResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.99"
+        }
+      ]
+    },
+    "TestDeleteRepository": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.83"
+        }
+      ]
+    },
+    "TestDeleteRepositoryRbacAllowed": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.14"
+        }
+      ]
+    },
+    "TestDeleteRepositoryRbacDenied": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.78"
+        }
+      ]
+    },
+    "TestDeletingAppByLabel": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.10"
+        }
+      ]
+    },
+    "TestDeletingAppStuckInSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.01"
+        }
+      ]
+    },
+    "TestDeletingNamespacedAppStuckInSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.97"
+        }
+      ]
+    },
+    "TestDeployment": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.72"
+        }
+      ]
+    },
+    "TestDeploymentWithAnnotationTrackingMode": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.47"
+        }
+      ]
+    },
+    "TestDeploymentWithLabelTrackingMode": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.10"
+        }
+      ]
+    },
+    "TestDeploymentWithoutTrackingMode": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.03"
+        }
+      ]
+    },
+    "TestDisableManifestGeneration": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.20"
+        }
+      ]
+    },
+    "TestDiscoverNewCommit": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.75"
+        }
+      ]
+    },
+    "TestDuplicatedResources": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "9.53"
+        }
+      ]
+    },
+    "TestExcludedResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.20"
+        }
+      ]
+    },
+    "TestFailedSyncWithRetry": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.98"
+        }
+      ]
+    },
+    "TestFixingDegradedApp": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "17.57"
+        }
+      ]
+    },
+    "TestForbiddenNamespace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.80"
+        }
+      ]
+    },
+    "TestGetLogsAllowNoSwitch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestGetLogsAllowSwitchOff": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestGetLogsAllowSwitchOn": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestGetLogsDenySwitchOn": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestGetRepoCLIOutput": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.44"
+        }
+      ]
+    },
+    "TestGetRepoWithInheritedCreds": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "3.70"
+        }
+      ]
+    },
+    "TestGetVirtualProjectMatch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.72"
+        }
+      ]
+    },
+    "TestGetVirtualProjectNoMatch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.62"
+        }
+      ]
+    },
+    "TestGitGeneratorPrivateRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.82"
+        }
+      ]
+    },
+    "TestGitGeneratorPrivateRepoGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.17"
+        }
+      ]
+    },
+    "TestGitSubmoduleHTTPSSupport": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestGitSubmoduleSSHSupport": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestGitWithHelmOCIRegistryDependencies": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestHelm3CRD": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.15"
+        }
+      ]
+    },
+    "TestHelmCrdHook": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "16.00"
+        }
+      ]
+    },
+    "TestHelmHookDeletePolicy": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.00"
+        }
+      ]
+    },
+    "TestHelmHookWeight": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.32"
+        }
+      ]
+    },
+    "TestHelmHooksAreCreated": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "15.74"
+        }
+      ]
+    },
+    "TestHelmIgnoreMissingValueFiles": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.62"
+        }
+      ]
+    },
+    "TestHelmOCIRegistry": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestHelmOCIRegistryWithDependencies": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestHelmReleaseName": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.44"
+        }
+      ]
+    },
+    "TestHelmRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "56.57"
+        }
+      ]
+    },
+    "TestHelmRepoDiffLocal": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "59.09"
+        }
+      ]
+    },
+    "TestHelmSet": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.77"
+        }
+      ]
+    },
+    "TestHelmSetEnv": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "16.46"
+        }
+      ]
+    },
+    "TestHelmSetFile": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.47"
+        }
+      ]
+    },
+    "TestHelmSetString": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "14.55"
+        }
+      ]
+    },
+    "TestHelmSetStringEnv": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.62"
+        }
+      ]
+    },
+    "TestHelmValues": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.41"
+        }
+      ]
+    },
+    "TestHelmValuesHiddenDirectory": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.33"
+        }
+      ]
+    },
+    "TestHelmValuesLiteralFileLocal": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.67"
+        }
+      ]
+    },
+    "TestHelmValuesLiteralFileRemote": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.55"
+        }
+      ]
+    },
+    "TestHelmValuesMultipleUnset": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.76"
+        }
+      ]
+    },
+    "TestHelmWithDependencies": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "57.23"
+        }
+      ]
+    },
+    "TestHelmWithDependenciesLegacyRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "56.54"
+        }
+      ]
+    },
+    "TestHelmWithMultipleDependencies": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "55.73"
+        }
+      ]
+    },
+    "TestHookBeforeHookCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "18.23"
+        }
+      ]
+    },
+    "TestHookBeforeHookCreationFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.30"
+        }
+      ]
+    },
+    "TestHookDeletePolicyHookFailedHookExit0": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.03"
+        }
+      ]
+    },
+    "TestHookDeletePolicyHookFailedHookExit1": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.07"
+        }
+      ]
+    },
+    "TestHookDeletePolicyHookSucceededHookExit0": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.00"
+        }
+      ]
+    },
+    "TestHookDeletePolicyHookSucceededHookExit1": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.99"
+        }
+      ]
+    },
+    "TestHookDiff": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "3.88"
+        }
+      ]
+    },
+    "TestHookSkip": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.52"
+        }
+      ]
+    },
+    "TestImmutableChange": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestInvalidAppProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.36"
+        }
+      ]
+    },
+    "TestJsonnetAppliedCorrectly": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.07"
+        }
+      ]
+    },
+    "TestJsonnetExtVarEnv": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.52"
+        }
+      ]
+    },
+    "TestJsonnetNestedDirWithImports": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.68"
+        }
+      ]
+    },
+    "TestJsonnetTlaEnv": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.37"
+        }
+      ]
+    },
+    "TestJsonnetTlaParameterAppliedCorrectly": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.78"
+        }
+      ]
+    },
+    "TestKnownTypesInCRDDiffing": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.37"
+        }
+      ]
+    },
+    "TestKubeVersion": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.91"
+        }
+      ]
+    },
+    "TestKustomize2AppSource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.70"
+        }
+      ]
+    },
+    "TestKustomizeBuildOptionsLoadRestrictor": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.20"
+        }
+      ]
+    },
+    "TestKustomizeDeclarativeInvalidApp": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.71"
+        }
+      ]
+    },
+    "TestKustomizeImages": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.13"
+        }
+      ]
+    },
+    "TestKustomizeNameSuffix": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.38"
+        }
+      ]
+    },
+    "TestKustomizeSSHRemoteBase": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.39"
+        }
+      ]
+    },
+    "TestKustomizeUnsetOverride": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.92"
+        }
+      ]
+    },
+    "TestListMatrixGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.47"
+        }
+      ]
+    },
+    "TestListMergeGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.17"
+        }
+      ]
+    },
+    "TestListRepoCLIOutput": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.94"
+        }
+      ]
+    },
+    "TestListResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestLocalManifestSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.48"
+        }
+      ]
+    },
+    "TestLocalSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.27"
+        }
+      ]
+    },
+    "TestLocalSyncDryRunWithAutosyncEnabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.30"
+        }
+      ]
+    },
+    "TestLoginBadCredentials": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.62"
+        }
+      ]
+    },
+    "TestManipulateApplicationResources": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.70"
+        }
+      ]
+    },
+    "TestMultiSourceAppCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.83"
+        }
+      ]
+    },
+    "TestMultiSourceAppWithHelmExternalValueFiles": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "65.90"
+        }
+      ]
+    },
+    "TestMultiSourceAppWithSourceOverride": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.00"
+        }
+      ]
+    },
+    "TestNSAutoSyncSelfHealDisabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "19.26"
+        }
+      ]
+    },
+    "TestNSAutoSyncSelfHealEnabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "20.18"
+        }
+      ]
+    },
+    "TestNamespaceAutoCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedAppCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.95"
+        }
+      ]
+    },
+    "TestNamespacedAppCreationWithoutForceUpdate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.91"
+        }
+      ]
+    },
+    "TestNamespacedAppDeletion": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.80"
+        }
+      ]
+    },
+    "TestNamespacedAppLabels": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.84"
+        }
+      ]
+    },
+    "TestNamespacedAppLogs": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedAppRollbackSuccessful": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.35"
+        }
+      ]
+    },
+    "TestNamespacedAppWaitOperationInProgress": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.34"
+        }
+      ]
+    },
+    "TestNamespacedAppWithSecrets": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "10.83"
+        }
+      ]
+    },
+    "TestNamespacedCRDStatusSubresourceAction": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "16.65"
+        }
+      ]
+    },
+    "TestNamespacedCannotSetInvalidPath": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.09"
+        }
+      ]
+    },
+    "TestNamespacedCompareOptionIgnoreExtraneous": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.41"
+        }
+      ]
+    },
+    "TestNamespacedComparisonFailsIfClusterNotAdded": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.53"
+        }
+      ]
+    },
+    "TestNamespacedConfigMap": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.02"
+        }
+      ]
+    },
+    "TestNamespacedCreateAppWithNoNameSpaceForGlobalResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.37"
+        }
+      ]
+    },
+    "TestNamespacedCreateAppWithNoNameSpaceWhenRequired": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.89"
+        }
+      ]
+    },
+    "TestNamespacedCreateAppWithNoNameSpaceWhenRequired2": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.12"
+        }
+      ]
+    },
+    "TestNamespacedCreateDisableValidation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.54"
+        }
+      ]
+    },
+    "TestNamespacedCreateFromPartialFile": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "12.62"
+        }
+      ]
+    },
+    "TestNamespacedDeleteAppResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.14"
+        }
+      ]
+    },
+    "TestNamespacedDisableManifestGeneration": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.49"
+        }
+      ]
+    },
+    "TestNamespacedDiscoverNewCommit": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.51"
+        }
+      ]
+    },
+    "TestNamespacedExcludedResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.04"
+        }
+      ]
+    },
+    "TestNamespacedFailedSyncWithRetry": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "16.09"
+        }
+      ]
+    },
+    "TestNamespacedGetLogsAllowNoSwitch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedGetLogsAllowSwitchOff": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedGetLogsAllowSwitchOnNS": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedGetLogsDenySwitchOn": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedImmutableChange": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedInvalidAppProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.68"
+        }
+      ]
+    },
+    "TestNamespacedKnownTypesInCRDDiffing": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "20.31"
+        }
+      ]
+    },
+    "TestNamespacedListResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedLocalManifestSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.97"
+        }
+      ]
+    },
+    "TestNamespacedLocalSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.91"
+        }
+      ]
+    },
+    "TestNamespacedLocalSyncDryRunWithASEnabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.44"
+        }
+      ]
+    },
+    "TestNamespacedManipulateApplicationResources": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "15.44"
+        }
+      ]
+    },
+    "TestNamespacedNamespaceAutoCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedNamespaceAutoCreationWithMetadata": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedNamespaceAutoCreationWithMetadataAndNsManifest": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedNamespaceAutoCreationWithPreexistingNs": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedNoLocalSyncWithAutosyncEnabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.50"
+        }
+      ]
+    },
+    "TestNamespacedNotPermittedResources": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.85"
+        }
+      ]
+    },
+    "TestNamespacedOrphanedResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedPermissionDeniedWithScopedRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.16"
+        }
+      ]
+    },
+    "TestNamespacedPermissionWithScopedRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "15.52"
+        }
+      ]
+    },
+    "TestNamespacedPermissions": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.09"
+        }
+      ]
+    },
+    "TestNamespacedResourceAction": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.28"
+        }
+      ]
+    },
+    "TestNamespacedResourceDiffing": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "29.79"
+        }
+      ]
+    },
+    "TestNamespacedRevisionHistoryLimit": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.17"
+        }
+      ]
+    },
+    "TestNamespacedSelfManagedApps": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.53"
+        }
+      ]
+    },
+    "TestNamespacedSyncAsync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.13"
+        }
+      ]
+    },
+    "TestNamespacedSyncOptionPruneFalse": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.84"
+        }
+      ]
+    },
+    "TestNamespacedSyncOptionReplace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.61"
+        }
+      ]
+    },
+    "TestNamespacedSyncOptionReplaceFromCLI": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.03"
+        }
+      ]
+    },
+    "TestNamespacedSyncOptionValidateFalse": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "8.92"
+        }
+      ]
+    },
+    "TestNamespacedSyncResourceByLabel": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.40"
+        }
+      ]
+    },
+    "TestNamespacedSyncToSignedCommitKWKK": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedSyncToSignedCommitWKK": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedSyncToUnsignedCommit": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestNamespacedSyncWithInfos": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.43"
+        }
+      ]
+    },
+    "TestNamespacedTrackAppStateAndSyncApp": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.07"
+        }
+      ]
+    },
+    "TestNamingNonHookResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.65"
+        }
+      ]
+    },
+    "TestNoLocalSyncWithAutosyncEnabled": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.64"
+        }
+      ]
+    },
+    "TestNotPermittedResources": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.24"
+        }
+      ]
+    },
+    "TestNotificationsListServices": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.04"
+        }
+      ]
+    },
+    "TestNotificationsListTemplates": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.47"
+        }
+      ]
+    },
+    "TestNotificationsListTriggers": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.54"
+        }
+      ]
+    },
+    "TestOneProgressingDeploymentIsSucceededAndSynced": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.28"
+        }
+      ]
+    },
+    "TestOrphanedResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestPatch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.00"
+        }
+      ]
+    },
+    "TestPatchHttp": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.88"
+        }
+      ]
+    },
+    "TestPermissionDeniedWithNegatedNamespace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.30"
+        }
+      ]
+    },
+    "TestPermissionDeniedWithNegatedServer": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.08"
+        }
+      ]
+    },
+    "TestPermissionDeniedWithScopedRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.68"
+        }
+      ]
+    },
+    "TestPermissionWithScopedRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.33"
+        }
+      ]
+    },
+    "TestPermissions": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.30"
+        }
+      ]
+    },
+    "TestPostSyncHookFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.95"
+        }
+      ]
+    },
+    "TestPostSyncHookPodFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.02"
+        }
+      ]
+    },
+    "TestPostSyncHookSuccessful": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "15.83"
+        }
+      ]
+    },
+    "TestPreSyncHookFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.42"
+        }
+      ]
+    },
+    "TestPreSyncHookSuccessful": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "17.42"
+        }
+      ]
+    },
+    "TestProjectCreation": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.94"
+        }
+      ]
+    },
+    "TestProjectDeletion": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.49"
+        }
+      ]
+    },
+    "TestPruneResourceFromCMP": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.26"
+        }
+      ]
+    },
+    "TestPruningRequired": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.55"
+        }
+      ]
+    },
+    "TestRemoveOrphanedIgnore": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.91"
+        }
+      ]
+    },
+    "TestRemoveProjectDestination": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.07"
+        }
+      ]
+    },
+    "TestRemoveProjectSource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.16"
+        }
+      ]
+    },
+    "TestResourceAction": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "8.13"
+        }
+      ]
+    },
+    "TestResourceDiffing": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "27.21"
+        }
+      ]
+    },
+    "TestRevisionHistoryLimit": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.15"
+        }
+      ]
+    },
+    "TestSelectiveSync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.34"
+        }
+      ]
+    },
+    "TestSelectiveSyncDoesNotRunHooks": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.98"
+        }
+      ]
+    },
+    "TestSelectiveSyncWithNamespace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.44"
+        }
+      ]
+    },
+    "TestSelectiveSyncWithoutNamespace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.52"
+        }
+      ]
+    },
+    "TestSelfManagedApps": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "7.67"
+        }
+      ]
+    },
+    "TestSetProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.50"
+        }
+      ]
+    },
+    "TestSimpleClusterDecisionResourceGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.69"
+        }
+      ]
+    },
+    "TestSimpleClusterDecisionResourceGeneratorAddingCluster": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.21"
+        }
+      ]
+    },
+    "TestSimpleClusterDecisionResourceGeneratorDeletingClusterFromResource": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.25"
+        }
+      ]
+    },
+    "TestSimpleClusterDecisionResourceGeneratorDeletingClusterSecret": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "17.22"
+        }
+      ]
+    },
+    "TestSimpleClusterGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "14.70"
+        }
+      ]
+    },
+    "TestSimpleClusterGeneratorAddingCluster": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.15"
+        }
+      ]
+    },
+    "TestSimpleClusterGeneratorDeletingCluster": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "11.18"
+        }
+      ]
+    },
+    "TestSimpleGitDirectoryGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.22"
+        }
+      ]
+    },
+    "TestSimpleGitDirectoryGeneratorGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.22"
+        }
+      ]
+    },
+    "TestSimpleGitFilesGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.21"
+        }
+      ]
+    },
+    "TestSimpleGitFilesGeneratorGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.17"
+        }
+      ]
+    },
+    "TestSimpleGitFilesPreserveResourcesOnDeletionGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "34.10"
+        }
+      ]
+    },
+    "TestSimpleListGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.13"
+        }
+      ]
+    },
+    "TestSimpleListGeneratorGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "13.15"
+        }
+      ]
+    },
+    "TestSimplePullRequestGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "31.11"
+        }
+      ]
+    },
+    "TestSimplePullRequestGeneratorGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "31.70"
+        }
+      ]
+    },
+    "TestSimpleSCMProviderGenerator": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "42.76"
+        }
+      ]
+    },
+    "TestSimpleSCMProviderGeneratorGoTemplate": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "31.91"
+        }
+      ]
+    },
+    "TestSwitchTrackingLabel": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "21.19"
+        }
+      ]
+    },
+    "TestSwitchTrackingMethod": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "27.60"
+        }
+      ]
+    },
+    "TestSyncAsync": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "6.55"
+        }
+      ]
+    },
+    "TestSyncFailHookPodFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "20.15"
+        }
+      ]
+    },
+    "TestSyncFailHookPodFailureSyncFailFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "20.01"
+        }
+      ]
+    },
+    "TestSyncHookFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.78"
+        }
+      ]
+    },
+    "TestSyncHookResourceFailure": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.07"
+        }
+      ]
+    },
+    "TestSyncHookSuccessful": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.86"
+        }
+      ]
+    },
+    "TestSyncOptionPruneFalse": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.89"
+        }
+      ]
+    },
+    "TestSyncOptionReplace": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.97"
+        }
+      ]
+    },
+    "TestSyncOptionReplaceFromCLI": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.83"
+        }
+      ]
+    },
+    "TestSyncOptionValidateFalse": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "FAIL",
+          "time": "4.64"
+        }
+      ]
+    },
+    "TestSyncOptionsValidateFalse": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.75"
+        }
+      ]
+    },
+    "TestSyncOptionsValidateTrue": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncResourceByLabel": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "9.66"
+        }
+      ]
+    },
+    "TestSyncResourceByProject": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.84"
+        }
+      ]
+    },
+    "TestSyncStatusOptionIgnore": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "5.92"
+        }
+      ]
+    },
+    "TestSyncToSignedBranchWithKnownKey": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToSignedBranchWithUnknownKey": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToSignedCommitWithKnownKey": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToSignedCommitWithoutKnownKey": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToSignedTagWithKnownKey": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToSignedTagWithUnknownKey": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToUnsignedBranch": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToUnsignedCommit": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncToUnsignedTag": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncWithInfos": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.89"
+        }
+      ]
+    },
+    "TestSyncWithSkipHook": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestSyncWithStatusIgnored": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "10.56"
+        }
+      ]
+    },
+    "TestTemplatesGitWithHelmOCIDependencies": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestTemplatesHelmOCIWithDependencies": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "SKIP",
+          "time": "0.00"
+        }
+      ]
+    },
+    "TestTrackAppStateAndSyncApp": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.38"
+        }
+      ]
+    },
+    "TestUpsertExistingRepo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "3.32"
+        }
+      ]
+    },
+    "TestUseJWTToken": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "4.20"
+        }
+      ]
+    },
+    "TestUserInfo": {
+      "": [
+        {
+          "c": "StartTest"
+        }
+      ],
+      "finished": [
+        {
+          "result": "PASS",
+          "time": "2.83"
+        }
+      ]
+    }
+  }
+}

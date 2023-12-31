@@ -32,8 +32,3 @@ repos:
       # a mistake instead of a requirement. Remove this if needed
       - id: check-added-large-files       # fails if a file larger than 10 MB exists
         args: ['--maxkb=10240', '--enforce-all']
-
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
-    hooks:
-      - id: git-check     # check for git conflict markers and whitespace errors - uses git internally
