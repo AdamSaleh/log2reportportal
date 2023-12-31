@@ -86,7 +86,7 @@ func (p *RPLogger) requestWithAuth() *resty.Request {
 	return p.client.R().SetAuthToken(p.authToken)
 }
 
-func (p *RPLogger) gPortalItem(apiPath, id string, item interface{}) error {
+func (p *RPLogger) gPortalItem(apiPath, id string, item interface{}) {
 	url := fmt.Sprintf("/%s/%s", apiPath, id)
 	_, err := p.requestWithAuth().
 		SetResult(item).
@@ -94,7 +94,6 @@ func (p *RPLogger) gPortalItem(apiPath, id string, item interface{}) error {
 	if err != nil {
 		panic(fmt.Errorf("Error:%w", err))
 	}
-	return fmt.Errorf("Error:%w", err)
 }
 
 func (p *RPLogger) uPortalItem(apiPath, id string, item interface{}) {
@@ -107,7 +106,7 @@ func (p *RPLogger) uPortalItem(apiPath, id string, item interface{}) {
 	}
 }
 
-func (p *RPLogger) cPortalItem(apiPath string, item interface{}) error {
+func (p *RPLogger) cPortalItem(apiPath string, item interface{}) {
 	resultID := &ResultID{}
 	_, err := p.requestWithAuth().
 		SetBody(item).
@@ -116,13 +115,8 @@ func (p *RPLogger) cPortalItem(apiPath string, item interface{}) error {
 	if err != nil {
 		panic(fmt.Errorf("Error:%w", err))
 	}
-
-	err = p.gPortalItem(apiPath, resultID.ID, item)
-	if err != nil {
-		panic(fmt.Errorf("Error:%w", err))
-	}
-
-	return fmt.Errorf("Error:%w", err)
+	fmt.Println(resultID)
+	p.gPortalItem(apiPath, resultID.ID, item)
 }
 
 func (p *RPLogger) cAsyncPortalItem(apiPath string, item interface{}) string {
@@ -178,10 +172,7 @@ func (p *RPLogger) EnsureLaunch(name, startTime string) {
 		return
 	}
 	l := &RPLaunch{Name: name, StartTime: toUnix(startTime)}
-	err := p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), l)
-	if err != nil {
-		panic(fmt.Errorf("Error:%w", err))
-	}
+	p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), l)
 	p.launch = l
 }
 
@@ -281,7 +272,9 @@ func (l *DefaultLines) reRUN() string {
 }
 
 func (l *DefaultLines) reLOG() string {
-	return `(?:^time="(?P<date>[0-9-:]*)T(?P<timestamp>\d\d:\d\d:\d\d)Z".*level=(?P<level>\w+).*msg="(?P<msg>.*)".*$|^.*logger.*(?P<timestamp>\d\d:\d\d:\d\d) \| (?P<test>[\w-_]*)/?(?P<step>[\w-_]*)? \|(?P<msg>.*)$)`
+	argo := `time="(?P<date>[0-9-:]*)T(?P<timestamp>\d\d:\d\d:\d\d)Z".*level=(?P<level>\w+).*msg="(?P<msg>.*)".*`
+	kuttl := `.*logger.*(?P<timestamp>\d\d:\d\d:\d\d) \| (?P<test>[\w-_]*)/?(?P<step>[\w-_]*)? \|(?P<msg>.*)`
+	return fmt.Sprintf(`(?:^%s$|^%s$)`, argo, kuttl)
 }
 
 func (l *DefaultLines) rePAUSE() string {

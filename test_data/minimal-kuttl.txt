@@ -1,0 +1,5 @@
+  startTime: "2023-11-21T00:17:10Z"
+=== RUN   kuttl/harness/1-009_validate-manage-other-namespace
+=== CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-009_validate-manage-other-namespace | Ignoring README.md as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+        --- PASS: kuttl/harness/1-009_validate-manage-other-namespace (98.13s)

@@ -1,0 +1,185 @@
+
+
+
+==============================================================================
+~~~ REQUEST ~~~
+POST  /api/v1/TEST_PROJECT/launch  HTTP/1.1
+HOST   : portal
+HEADERS:
+	Authorization: Bearer TOKEN
+	Content-Type: application/json
+	User-Agent: go-resty/2.10.0 (https://github.com/go-resty/resty)
+BODY   :
+{
+   "name": "REPORT_NAME",
+   "startTime": 1700525972000
+}
+
+------------------------------------------------------------------------------
+~~~ RESPONSE ~~~
+STATUS       : 200
+PROTO        :
+
+
+HEADERS      :
+	Content-Type: application/json
+BODY         :
+{
+   "id": "testid"
+}
+==============================================================================
+
+
+
+==============================================================================
+~~~ REQUEST ~~~
+GET  /api/v1/TEST_PROJECT/launch/testid  HTTP/1.1
+HOST   : portal
+HEADERS:
+	Authorization: Bearer TOKEN
+	User-Agent: go-resty/2.10.0 (https://github.com/go-resty/resty)
+BODY   :
+***** NO CONTENT *****
+------------------------------------------------------------------------------
+~~~ RESPONSE ~~~
+STATUS       : 200
+PROTO        :
+
+
+HEADERS      :
+	Content-Type: application/json
+BODY         :
+{
+   "uuid": "testid"
+}
+==============================================================================
+
+
+
+==============================================================================
+~~~ REQUEST ~~~
+POST  /api/v2/TEST_PROJECT/item  HTTP/1.1
+HOST   : portal
+HEADERS:
+	Authorization: Bearer TOKEN
+	Content-Type: application/json
+	User-Agent: go-resty/2.10.0 (https://github.com/go-resty/resty)
+BODY   :
+{
+   "name": "1-009_validate-manage-other-namespace",
+   "type": "test",
+   "launchUuid": "testid",
+   "description": "1-009_validate-manage-other-namespace",
+   "startTime": 1700525972000
+}
+
+------------------------------------------------------------------------------
+~~~ RESPONSE ~~~
+STATUS       : 200
+PROTO        :
+
+
+HEADERS      :
+	Content-Type: application/json
+BODY         :
+{
+   "id": "testid"
+}
+==============================================================================
+
+
+
+==============================================================================
+~~~ REQUEST ~~~
+POST  /api/v2/TEST_PROJECT/log/entry  HTTP/1.1
+HOST   : portal
+HEADERS:
+	Authorization: Bearer TOKEN
+	Content-Type: application/json
+	User-Agent: go-resty/2.10.0 (https://github.com/go-resty/resty)
+BODY   :
+{
+   "launchUuid": "testid",
+   "time": "2023-11-21T00:19:32Z",
+   "itemUuid": "testid",
+   "message": " Ignoring README.md as it does not match file name regexp: ^(\\d+)-(?:[^\\.]+)(?:\\.yaml)?$",
+   "level": ""
+}
+
+------------------------------------------------------------------------------
+~~~ RESPONSE ~~~
+STATUS       : 200
+PROTO        :
+
+
+HEADERS      :
+	Content-Type: application/json
+BODY         :
+{
+   "id": "testid"
+}
+==============================================================================
+
+
+
+==============================================================================
+~~~ REQUEST ~~~
+PUT  /api/v1/TEST_PROJECT/item/testid  HTTP/1.1
+HOST   : portal
+HEADERS:
+	Authorization: Bearer TOKEN
+	Content-Type: application/json
+	User-Agent: go-resty/2.10.0 (https://github.com/go-resty/resty)
+BODY   :
+{
+   "type": "",
+   "launchUuid": "testid",
+   "description": "",
+   "status": "passed",
+   "endTime": 1700526070000
+}
+
+------------------------------------------------------------------------------
+~~~ RESPONSE ~~~
+STATUS       : 200
+PROTO        :
+
+
+HEADERS      :
+	Content-Type: application/json
+BODY         :
+{
+   "id": "testid"
+}
+==============================================================================
+
+
+
+==============================================================================
+~~~ REQUEST ~~~
+PUT  /api/v1/TEST_PROJECT/launch/testid/finish/  HTTP/1.1
+HOST   : portal
+HEADERS:
+	Authorization: Bearer TOKEN
+	Content-Type: application/json
+	User-Agent: go-resty/2.10.0 (https://github.com/go-resty/resty)
+BODY   :
+{
+   "launchUuid": "",
+   "description": "",
+   "endTime": 1700525972000
+}
+
+------------------------------------------------------------------------------
+~~~ RESPONSE ~~~
+STATUS       : 200
+PROTO        :
+
+
+HEADERS      :
+	Content-Type: application/json
+BODY         :
+{
+   "id": "testid"
+}
+==============================================================================

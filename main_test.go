@@ -3,16 +3,36 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"regexp"
 	"testing"
 
 	"github.com/bitfield/script"
+	"github.com/go-resty/resty/v2"
+	"github.com/jarcoal/httpmock"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	. "github.com/onsi/gomega/gstruct"
 )
+
+var client *resty.Client
+
+var _ = BeforeSuite(func() {
+	// block all HTTP requests
+	client = resty.New()
+	httpmock.ActivateNonDefault(client.GetClient())
+})
+
+var _ = BeforeEach(func() {
+	// remove any mocks
+	httpmock.Reset()
+})
+
+var _ = AfterSuite(func() {
+	httpmock.DeactivateAndReset()
+})
 
 type CasesType map[string]map[string][]map[string]string
 
@@ -83,7 +103,38 @@ func mapToMatcher(m CasesType) Keys {
 	return o
 }
 
-var _ = Describe("Testing stuff", func() {
+func mockOkJSON(v any) httpmock.Responder {
+	return httpmock.NewJsonResponderOrPanic(
+		200,
+		v)
+}
+
+type TestRestLogger struct {
+	log string
+}
+
+func (l *TestRestLogger) Errorf(format string, v ...interface{}) {
+	s := fmt.Sprintf(format, v...)
+	s, _ = script.Echo(s).ReplaceRegexp(regexp.MustCompile("^RECEIVED AT.*$"), "").String()
+	l.log = fmt.Sprintf("%s\n\n%s", l.log, s)
+}
+
+func (l *TestRestLogger) Warnf(format string, v ...interface{}) {
+	s := fmt.Sprintf(format, v...)
+	s, _ = script.Echo(s).ReplaceRegexp(regexp.MustCompile("^RECEIVED AT.*$"), "").String()
+	l.log = fmt.Sprintf("%s\n\n%s", l.log, s)
+}
+
+func (l *TestRestLogger) Debugf(format string, v ...interface{}) {
+	s := fmt.Sprintf(format, v...)
+	s, _ = script.Echo(s).
+		ReplaceRegexp(regexp.MustCompile("^RECEIVED AT.*$"), "").
+		ReplaceRegexp(regexp.MustCompile("^TIME DURATION.*$"), "").
+		String()
+	l.log = fmt.Sprintf("%s\n\n%s", l.log, s)
+}
+
+var _ = Describe("Testing parsing", func() {
 	dl := &DefaultLines{}
 
 	DescribeTable("Processing with MockReportBuilder", func(inputFile, expectedtFile string) {
@@ -129,6 +180,59 @@ var _ = Describe("Testing stuff", func() {
 			dl.reSTAMP(), `  startTime: "2023-11-21T00:17:10Z"`,
 			Keys{"startDate": Equal("2023-11-21")}),
 	)
+})
+
+var _ = Describe("Testing mock upload", func() {
+	It("Exported", func() {
+		client.SetBaseURL("http://portal/")
+		client.SetDebug(true)
+		l := &TestRestLogger{log: ""}
+		client.SetLogger(l)
+		tr := map[string]string{"id": "testid"}
+		tu := map[string]string{"uuid": "testid"}
+
+		httpmock.RegisterResponder(
+			"POST",
+			"http://portal/api/v1/TEST_PROJECT/launch",
+			mockOkJSON(tr))
+		httpmock.RegisterResponder(
+			"GET",
+			"http://portal/api/v1/TEST_PROJECT/launch/testid",
+			mockOkJSON(tu))
+		httpmock.RegisterResponder(
+			"PUT",
+			"http://portal/api/v1/TEST_PROJECT/launch/testid/finish/",
+			mockOkJSON(tr))
+
+		httpmock.RegisterResponder(
+			"POST",
+			"http://portal/api/v2/TEST_PROJECT/item",
+			mockOkJSON(tr))
+
+		httpmock.RegisterResponder(
+			"PUT",
+			"http://portal/api/v1/TEST_PROJECT/item/testid",
+			mockOkJSON(tr))
+
+		httpmock.RegisterResponder(
+			"POST",
+			"http://portal/api/v2/TEST_PROJECT/log/entry",
+			mockOkJSON(tr))
+
+		lg := NewRPLogger(client, "TOKEN", "TEST_PROJECT")
+
+		processLinear(lg, "REPORT_NAME", script.File("./test_data/minimal-kuttl.txt"))
+		file, err := os.OpenFile("./test_data/http_log", os.O_RDONLY, 0o666)
+		if errors.Is(err, os.ErrNotExist) {
+			_, errW := script.Echo(l.log).WriteFile("./test_data/http_log")
+			Expect(errW).To(BeNil())
+		} else {
+			Expect(err).To(BeNil())
+			defer file.Close()
+			bytes, _ := ioutil.ReadAll(file)
+			Expect(l.log).To(Equal(string(bytes)))
+		}
+	})
 })
 
 func TestAll(t *testing.T) {
