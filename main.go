@@ -22,17 +22,17 @@ type RPLaunch struct {
 	ID        int    `json:"id,omitempty"`
 }
 
-func (i *RPLaunch) setUUID(uuid string) {
+/*func (i *RPLaunch) setUUID(uuid string) {
 	i.UUID = uuid
-}
+}*/
 
 type Launches struct {
 	Content []RPLaunch `json:"content"`
 }
 
-type RPWithUUID interface {
+/*type RPWithUUID interface {
 	setUUID(uuid string)
-}
+}*/
 
 type RPItem struct {
 	Name        string `json:"name,omitempty"`
@@ -45,9 +45,9 @@ type RPItem struct {
 	ID          int    `json:"id,omitempty"`
 }
 
-func (i *RPItem) setUUID(uuid string) {
+/*func (i *RPItem) setUUID(uuid string) {
 	i.UUID = uuid
-}
+}*/
 
 type RPFinishItem struct {
 	Type        string `json:"type"`
@@ -66,9 +66,9 @@ type RPLog struct {
 	UUID       string `json:"uuid,omitempty"`
 }
 
-func (i *RPLog) setUUID(uuid string) {
+/*func (i *RPLog) setUUID(uuid string) {
 	i.UUID = uuid
-}
+}*/
 
 type ResultID struct {
 	ID string `json:"id"`
@@ -189,6 +189,7 @@ func (p *RPLogger) EnsureTest(name, startTime string) {
 
 func (p *RPLogger) AddLine(name, startTime, level, message string) {
 	fmt.Printf("LOG: %s %s %s %s", name, startTime, level, message)
+	p.EnsureTest(name, startTime)
 	currentCase := p.getCase(name)
 	fmt.Printf("LOG:CASE %v", currentCase)
 	l := &RPLog{
@@ -202,15 +203,15 @@ func (p *RPLogger) AddLine(name, startTime, level, message string) {
 	p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/log/entry", p.project), l)
 }
 
-func (p *RPLogger) FinnishTest(name, result, t string) {
+func (p *RPLogger) FinnishTest(name, startTime, result, t string) {
 	value, err := strconv.ParseFloat(t, 32)
 	if err != nil {
 		panic(fmt.Errorf("Error:%w", err))
 	}
+
+	p.EnsureTest(name, startTime)
 	currentCase := p.getCase(name)
-	if currentCase < 0 {
-		return
-	}
+
 	ts := p.Tests[currentCase]
 	f := &RPFinishItem{
 		EndTime:    ts.StartTime + int(value)*1000,
@@ -306,7 +307,14 @@ func (m *StateMachine) feed(line string) {
 	for _, pa := range m.patternToActions {
 		if mt := getMatches(pa.pattern, line); len(mt) > 0 {
 			for _, f := range pa.actions {
-				m.state = f(m.state, mt)
+				func() {
+					defer func() {
+						if r := recover(); r != nil {
+							fmt.Println("Recovered in f", r)
+						}
+					}()
+					m.state = f(m.state, mt)
+				}()
 			}
 			return
 		}
@@ -323,7 +331,7 @@ type TestReportBuilder interface {
 	getCase(name string) int
 	EnsureTest(name, startTime string)
 	AddLine(name, startTime, level, message string)
-	FinnishTest(name, result, time string)
+	FinnishTest(name, startTime, result, time string)
 	Finish(time string)
 	EnsureLaunch(name, startTime string)
 }
@@ -333,28 +341,27 @@ func processLinear(lg TestReportBuilder, lname string, filePipe *script.Pipe) {
 	m := mkMachine(map[string]string{"test": "", "level": "", "startDate": "", "time": "", "launch": ""}).
 		pattern(r.reSTAMP(), mapCopy).
 		pattern(r.reCONT(), mapCopy).
+		pattern(r.rePAUSE(), mapCopy).
 		pattern(r.reRUN(), mapCopy).
 		pattern(r.reLOG(), mapCopy,
 			func(s, m map[string]string) map[string]string {
 				if s["test"] != "" {
 					s["time"] = fmt.Sprintf("%s%sT%sZ", s["startDate"], m["date"], m["timestamp"])
 					lg.EnsureLaunch(lname, s["time"])
-					lg.EnsureTest(s["test"], s["time"])
 					lg.AddLine(s["test"], s["time"], s["level"], m["msg"])
 				}
 				return s
 			}).pattern(r.reEND(),
 		mapCopy,
-		func(s, m map[string]string) map[string]string {
+		func(s, m map[string]string) (o map[string]string) {
 			if s["test"] != "" {
-				lg.EnsureTest(s["test"], s["time"])
-				lg.FinnishTest(s["test"], m["result"], m["duration"])
+				lg.FinnishTest(s["test"], s["time"], m["result"], m["duration"])
 			}
 			return s
 		},
 	).pattern("(?P<line>^.*$)",
 		func(s, m map[string]string) map[string]string {
-			if (s["test"] != "" && s["time"] != "") && s["level"] != "" {
+			if s["test"] != "" && s["time"] != "" {
 				lg.EnsureTest(s["test"], s["time"])
 				lg.AddLine(s["test"], s["time"], s["level"], m["line"])
 			}

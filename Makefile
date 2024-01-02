@@ -24,7 +24,7 @@ VERSION := latest
 # Make is verbose in Linux. Make it silent
 MAKEFLAGS += --silent
 
-GOCMD := /var/usrlocal/go/bin/go
+GOCMD := /usr/bin/go
 
 .PHONY: help
 ## `help`: Generates this help dialog for the Makefile

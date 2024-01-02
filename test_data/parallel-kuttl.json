@@ -16,6 +16,9 @@
         },
         {
           "msg": " starting test step 1-install"
+        },
+        {
+          "msg": "Warning: ArgoCD v1alpha1 version is deprecated and will be converted to v1beta1 automatically. Moving forward, please use v1beta1 as the ArgoCD API version."
         }
       ],
       "2023-11-21T00:19:39Z": [
@@ -49,6 +52,24 @@
         },
         {
           "msg": " running command: [sh -c namespaces=$(oc get secret -n $NAMESPACE argocd-default-cluster-config -o jsonpath='{.data.namespaces}' | base64 -d)"
+        },
+        {
+          "msg": "        if test \"$namespaces\" != \"$NAMESPACE,test-1-9-custom\"; then"
+        },
+        {
+          "msg": "          echo \"Assertion for cluster secret failed!\""
+        },
+        {
+          "msg": "          exit 1"
+        },
+        {
+          "msg": "        fi"
+        },
+        {
+          "msg": "        exit 0"
+        },
+        {
+          "msg": "        ]"
         }
       ],
       "2023-11-21T00:20:21Z": [
@@ -90,6 +111,24 @@
         },
         {
           "msg": " running command: [sh -c namespaces=$(oc get secret -n $NAMESPACE argocd-default-cluster-config -o jsonpath='{.data.namespaces}' | base64 -d)"
+        },
+        {
+          "msg": "        if test \"$namespaces\" != \"$NAMESPACE\"; then"
+        },
+        {
+          "msg": "          echo \"Assertion for cluster secret failed!\""
+        },
+        {
+          "msg": "          exit 1"
+        },
+        {
+          "msg": "        fi"
+        },
+        {
+          "msg": "        exit 0"
+        },
+        {
+          "msg": "        ]"
         }
       ],
       "2023-11-21T00:20:50Z": [
@@ -98,6 +137,9 @@
         },
         {
           "msg": " starting test step 7-check"
+        },
+        {
+          "msg": "I1121 00:20:52.025989      30 request.go:655] Throttling request took 1.196088943s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/console.openshift.io/v1alpha1?timeout=32s"
         }
       ],
       "2023-11-21T00:20:55Z": [
@@ -106,6 +148,9 @@
         },
         {
           "msg": " starting test step 99-delete"
+        },
+        {
+          "msg": "I1121 00:21:08.929827      30 request.go:655] Throttling request took 1.044837643s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/performance.openshift.io/v1alpha1?timeout=32s"
         }
       ],
       "2023-11-21T00:21:10Z": [
@@ -117,6 +162,9 @@
         },
         {
           "msg": " Deleting namespace: kuttl-test-allowing-serval"
+        },
+        {
+          "msg": "PASS"
         }
       ],
       "finished": [
@@ -152,6 +200,9 @@
         },
         {
           "msg": " starting test step 2-enable_notification"
+        },
+        {
+          "msg": "I1121 00:20:07.045674      30 request.go:655] Throttling request took 1.043236944s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/cloudcredential.openshift.io/v1?timeout=32s"
         }
       ],
       "2023-11-21T00:20:08Z": [
@@ -176,6 +227,9 @@
         },
         {
           "msg": " starting test step 4-check"
+        },
+        {
+          "msg": "I1121 00:20:18.049024      30 request.go:655] Throttling request took 1.040983957s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/metrics.k8s.io/v1beta1?timeout=32s"
         }
       ],
       "2023-11-21T00:20:19Z": [
@@ -211,6 +265,9 @@
       "2023-11-21T00:19:37Z": [
         {
           "msg": " ArgoCD:kuttl-test-unbiased-earwig/argocd created"
+        },
+        {
+          "msg": "I1121 00:19:38.382031      30 request.go:655] Throttling request took 1.245080281s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/node.k8s.io/v1?timeout=32s"
         }
       ],
       "2023-11-21T00:20:09Z": [
@@ -222,6 +279,15 @@
         },
         {
           "msg": " running command: [sh -c set -e"
+        },
+        {
+          "msg": "        "
+        },
+        {
+          "msg": "        oc patch argocds.argoproj.io argocd --type=merge -p '{\"spec\":{\"redis\":{\"autotls\":\"openshift\"}}}' -n $NAMESPACE"
+        },
+        {
+          "msg": "        ]"
         },
         {
           "msg": " argocd.argoproj.io/argocd patched"
@@ -236,6 +302,51 @@
         },
         {
           "msg": " running command: [sh -c set -e"
+        },
+        {
+          "msg": "        secret_type=\"$(oc get secrets argocd-operator-redis-tls -n $NAMESPACE --template '{{.type}}')\""
+        },
+        {
+          "msg": "        secret_len=\"$(oc get secrets argocd-operator-redis-tls -n $NAMESPACE --template '{{len .data}}')\""
+        },
+        {
+          "msg": "        expected_secret_type=\"kubernetes.io/tls\""
+        },
+        {
+          "msg": "        expected_secret_len=2"
+        },
+        {
+          "msg": "        "
+        },
+        {
+          "msg": "        if test ${secret_type} != ${expected_secret_type}; then"
+        },
+        {
+          "msg": "          echo \"argocd-operator-redis-tls secret type is ${secret_type} and should be ${expected_secret_type}\""
+        },
+        {
+          "msg": "          exit 1"
+        },
+        {
+          "msg": "        fi"
+        },
+        {
+          "msg": "        if test ${secret_len} != ${expected_secret_len}; then"
+        },
+        {
+          "msg": "          echo \"argocd-operator-redis-tls secret length is ${secret_len} and should be ${expected_secret_len}\""
+        },
+        {
+          "msg": "          exit 1"
+        },
+        {
+          "msg": "        fi"
+        },
+        {
+          "msg": "        ]"
+        },
+        {
+          "msg": "I1121 00:20:41.978833      30 request.go:655] Throttling request took 1.046069024s, request: GET:https://api.ci-ocp-4-12-amd64-aws-us-east-1-jt8x6.hive.aws.ci.openshift.org:6443/apis/storage.k8s.io/v1?timeout=32s"
         }
       ],
       "2023-11-21T00:20:43Z": [
@@ -255,6 +366,21 @@
         },
         {
           "msg": " running command: [sh -c set -e"
+        },
+        {
+          "msg": "        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-server -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/server/tls/redis/tls.crt"
+        },
+        {
+          "msg": "        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-repo-server -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/reposerver/tls/redis/tls.crt"
+        },
+        {
+          "msg": "        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-redis -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/redis/tls/tls.crt"
+        },
+        {
+          "msg": "        oc exec -i $(oc get pod -l app.kubernetes.io/name=argocd-application-controller -n $NAMESPACE -o=NAME) -n $NAMESPACE -- ls /app/config/controller/tls/redis/tls.crt"
+        },
+        {
+          "msg": "        ]"
         },
         {
           "msg": " /app/config/server/tls/redis/tls.crt"
@@ -296,6 +422,15 @@
       "2023-11-21T00:21:10Z": [
         {
           "c": "StartTest"
+        },
+        {
+          "msg": "    harness.go:402: run tests finished"
+        },
+        {
+          "msg": "    harness.go:511: cleaning up"
+        },
+        {
+          "msg": "    harness.go:568: removing temp folder: \"\""
         }
       ],
       "finished": [

@@ -68,12 +68,14 @@ func (m *MockReportBuilder) EnsureTest(name, startTime string) {
 }
 
 func (m *MockReportBuilder) AddLine(name, startTime, level, message string) {
+	m.EnsureTest(name, startTime)
 	m.Cases[name][startTime] = append(m.Cases[name][startTime], map[string]string{
 		"msg": message,
 	})
 }
 
-func (m *MockReportBuilder) FinnishTest(name, result, time string) {
+func (m *MockReportBuilder) FinnishTest(name, startTime, result, time string) {
+	m.EnsureTest(name, startTime)
 	m.Cases[name]["finished"] = []map[string]string{
 		{"result": result, "time": time},
 	}

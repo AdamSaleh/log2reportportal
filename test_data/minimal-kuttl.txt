@@ -1,5 +1,17 @@
   startTime: "2023-11-21T00:17:10Z"
 === RUN   kuttl/harness/1-009_validate-manage-other-namespace
+=== RUN   kuttl/harness/1-010_validate-manage-other-namespace
+=== RUN   kuttl/harness/1-011_validate-manage-other-namespace
 === CONT  kuttl/harness/1-009_validate-manage-other-namespace
+    logger.go:42: 77:77:32 | 1-009_validate-manage-other-namespace | BAD TIMESTAMP
     logger.go:42: 00:19:32 | 1-009_validate-manage-other-namespace | Ignoring README.md as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+there is some
+random logging
+=== CONT  kuttl/harness/1-010_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-010_validate-manage-other-namespace | Ignoring README.md as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+=== CONT  kuttl/harness/1-011_validate-manage-other-namespace
+    logger.go:42: 00:19:32 | 1-011_validate-manage-other-namespace | Ignoring README.md as it does not match file name regexp: ^(\d+)-(?:[^\.]+)(?:\.yaml)?$
+        --- PASS: kuttl/harness/1-weirdnumber (asdfs)
         --- PASS: kuttl/harness/1-009_validate-manage-other-namespace (98.13s)
+        --- SKIP: kuttl/harness/1-010_validate-manage-other-namespace (98.13s)
+        --- FAIL: kuttl/harness/1-011_validate-manage-other-namespace (98.13s)
