@@ -78,6 +78,7 @@ type RPLogger struct {
 	project   string
 	authToken string
 	launch    *RPLaunch
+	suite     *RPItem
 	client    *resty.Client
 	Tests     []*RPItem
 }
@@ -86,8 +87,11 @@ func (p *RPLogger) requestWithAuth() *resty.Request {
 	return p.client.R().SetAuthToken(p.authToken)
 }
 
-func (p *RPLogger) gPortalItem(apiPath, id string, item interface{}) {
+func (p *RPLogger) gPortalItem(apiPath, parent, id string, item interface{}) {
 	url := fmt.Sprintf("/%s/%s", apiPath, id)
+	if parent != "" {
+		url = fmt.Sprintf("/%s/%s/%s", apiPath, parent, id)
+	}
 	_, err := p.requestWithAuth().
 		SetResult(item).
 		Get(url)
@@ -96,8 +100,11 @@ func (p *RPLogger) gPortalItem(apiPath, id string, item interface{}) {
 	}
 }
 
-func (p *RPLogger) uPortalItem(apiPath, id string, item interface{}) {
+func (p *RPLogger) uPortalItem(apiPath, parent, id string, item interface{}) {
 	url := fmt.Sprintf("/%s/%s", apiPath, id)
+	if parent != "" {
+		url = fmt.Sprintf("/%s/%s/%s", apiPath, parent, id)
+	}
 	_, err := p.requestWithAuth().
 		SetBody(item).
 		Put(url)
@@ -106,25 +113,32 @@ func (p *RPLogger) uPortalItem(apiPath, id string, item interface{}) {
 	}
 }
 
-func (p *RPLogger) cPortalItem(apiPath string, item interface{}) {
+func (p *RPLogger) cPortalItem(apiPath, parent string, item interface{}) {
+	url := apiPath
+	if parent != "" {
+		url = fmt.Sprintf("/%s/%s", apiPath, parent)
+	}
 	resultID := &ResultID{}
 	_, err := p.requestWithAuth().
 		SetBody(item).
 		SetResult(&resultID).
-		Post(apiPath)
+		Post(url)
 	if err != nil {
 		panic(fmt.Errorf("Error:%w", err))
 	}
-	fmt.Println(resultID)
-	p.gPortalItem(apiPath, resultID.ID, item)
+	p.gPortalItem(apiPath, parent, resultID.ID, item)
 }
 
-func (p *RPLogger) cAsyncPortalItem(apiPath string, item interface{}) string {
+func (p *RPLogger) cAsyncPortalItem(apiPath, parent string, item interface{}) string {
+	url := apiPath
+	if parent != "" {
+		url = fmt.Sprintf("/%s/%s", apiPath, parent)
+	}
 	resultID := &ResultID{}
 	_, err := p.requestWithAuth().
 		SetBody(item).
 		SetResult(&resultID).
-		Post(apiPath)
+		Post(url)
 	if err != nil {
 		panic(fmt.Errorf("Error:%w", err))
 	}
@@ -138,6 +152,13 @@ func NewRPLogger(client *resty.Client, token, project string) *RPLogger {
 
 func (p *RPLogger) getLaunch(name string) int {
 	if p.launch != nil {
+		return 0
+	}
+	return -1
+}
+
+func (p *RPLogger) getSuite(name string) int {
+	if p.suite != nil && p.suite.Name == name {
 		return 0
 	}
 	return -1
@@ -167,13 +188,17 @@ func toUnix(startTime string) int {
 	return int(tt.Unix()) * 1000 // api needs millisecond instead of seconds
 }
 
-func (p *RPLogger) EnsureLaunch(name, startTime string) {
-	if p.getLaunch(name) >= 0 {
-		return
+func (p *RPLogger) EnsureLaunch(name, suite, startTime string) {
+	if p.getLaunch(name) < 0 {
+		l := &RPLaunch{Name: name, StartTime: toUnix(startTime)}
+		p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), "", l)
+		p.launch = l
 	}
-	l := &RPLaunch{Name: name, StartTime: toUnix(startTime)}
-	p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), l)
-	p.launch = l
+	if p.getSuite(suite) < 0 {
+		s := &RPItem{Name: suite, Type: "suite", LaunchUUID: p.launch.UUID, StartTime: toUnix(startTime)}
+		p.cPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), "", s)
+		p.suite = s
+	}
 }
 
 func (p *RPLogger) EnsureTest(name, startTime string) {
@@ -183,7 +208,7 @@ func (p *RPLogger) EnsureTest(name, startTime string) {
 	t := toUnix(startTime)
 	uuid := p.launch.UUID
 	ts := &RPItem{Name: name, StartTime: t, Type: "test", LaunchUUID: uuid, Description: name}
-	ts.UUID = p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/item", p.project), ts)
+	ts.UUID = p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/item", p.project), p.suite.UUID, ts)
 	p.Tests = append(p.Tests, ts)
 }
 
@@ -200,7 +225,9 @@ func (p *RPLogger) AddLine(name, startTime, level, message string) {
 		Level:      level,
 	}
 	fmt.Printf("LOG:CASE %v", l)
-	p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/log/entry", p.project), l)
+	p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/log/entry", p.project), "", l)
+	l.ItemUUID = ""
+	p.cAsyncPortalItem(fmt.Sprintf("api/v2/%s/log/entry", p.project), "", l)
 }
 
 func (p *RPLogger) FinnishTest(name, startTime, result, t string) {
@@ -224,11 +251,11 @@ func (p *RPLogger) FinnishTest(name, startTime, result, t string) {
 	if result == "SKIP" {
 		f.Status = "skipped"
 	}
-	p.uPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), ts.UUID, f)
+	p.uPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), "", ts.UUID, f)
 }
 
 func (p *RPLogger) Finish(t string) {
-	p.uPortalItem(fmt.Sprintf("api/v1/%s/launch/%s/finish", p.project, p.launch.UUID), "", &RPItem{EndTime: toUnix(t)})
+	p.uPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), p.launch.UUID, "finish", &RPItem{EndTime: toUnix(t)})
 }
 
 func getMatches(re *regexp.Regexp, str string) map[string]string {
@@ -333,10 +360,10 @@ type TestReportBuilder interface {
 	AddLine(name, startTime, level, message string)
 	FinnishTest(name, startTime, result, time string)
 	Finish(time string)
-	EnsureLaunch(name, startTime string)
+	EnsureLaunch(name, suite, startTime string)
 }
 
-func processLinear(lg TestReportBuilder, lname string, filePipe *script.Pipe) {
+func processLinear(lg TestReportBuilder, launchName, suiteName string, filePipe *script.Pipe) {
 	r := &DefaultLines{}
 	m := mkMachine(map[string]string{"test": "", "level": "", "startDate": "", "time": "", "launch": ""}).
 		pattern(r.reSTAMP(), mapCopy).
@@ -347,7 +374,7 @@ func processLinear(lg TestReportBuilder, lname string, filePipe *script.Pipe) {
 			func(s, m map[string]string) map[string]string {
 				if s["test"] != "" {
 					s["time"] = fmt.Sprintf("%s%sT%sZ", s["startDate"], m["date"], m["timestamp"])
-					lg.EnsureLaunch(lname, s["time"])
+					lg.EnsureLaunch(launchName, suiteName, s["time"])
 					lg.AddLine(s["test"], s["time"], s["level"], m["msg"])
 				}
 				return s
@@ -371,7 +398,7 @@ func processLinear(lg TestReportBuilder, lname string, filePipe *script.Pipe) {
 	_, errPipe := filePipe.FilterLine(func(line string) string {
 		m.feed(line)
 		return line
-	}).String()
+	}).Stdout()
 	if errPipe != nil {
 		fmt.Println(errPipe)
 	}
@@ -379,17 +406,20 @@ func processLinear(lg TestReportBuilder, lname string, filePipe *script.Pipe) {
 }
 
 func main() {
+	var suiteName string
 	var reportName string
 	var reportProject string
 	var portalURL string
 	var skipTLS bool
 
 	t := time.Now()
-	flag.StringVar(&reportName, "name", fmt.Sprintf("run%s", t.Format("20060102150405")), "name of the report")
+	flag.StringVar(&reportName, "launch", fmt.Sprintf("run%s", t.Format("20060102150405")), "name of the report")
+	flag.StringVar(&suiteName, "name", fmt.Sprintf("run%s", t.Format("20060102150405")), "name of the report")
 	flag.StringVar(&reportProject, "project", "gitops-adhoc", "project to upload to")
 	flag.StringVar(&portalURL, "url",
 		"https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com", "url of the report portal")
 	flag.BoolVar(&skipTLS, "skipTls", false, "skip TLS checks")
+
 	flag.Parse()
 
 	token, ok := os.LookupEnv("RP_TOKEN")
@@ -401,5 +431,5 @@ func main() {
 	client.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: skipTLS})
 	lg := NewRPLogger(client, token, reportProject)
 
-	processLinear(lg, reportName, script.Stdin())
+	processLinear(lg, reportName, suiteName, script.Stdin())
 }

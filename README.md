@@ -1,15 +1,14 @@
 # log2reportportal
 
-<div align="center">
 
-[![Build Status](https://img.shields.io/github/checks-status/AdamSaleh/log2reportportal/main?color=black&style=for-the-badge&logo=github)][github-actions]
-[![Code Coverage](https://img.shields.io/codecov/c/github/AdamSaleh/log2reportportal?color=blue&logo=codecov&style=for-the-badge)][github-actions-tests]
+[![Build Status](https://img.shields.io/github/checks-status/AdamSaleh/log2reportportal/main?color=black&style=for-the-badge&logo=github)]
+[![Code Coverage](https://img.shields.io/codecov/c/github/AdamSaleh/log2reportportal?color=blue&logo=codecov&style=for-the-badge)]
 [![Security: bandit](https://img.shields.io/badge/Security-GoSec-lightgrey?style=for-the-badge&logo=springsecurity)](https://github.com/securego/gosec)
-[![Dependencies Status](https://img.shields.io/badge/Dependencies-Up%20to%20Date-brightgreen?style=for-the-badge&logo=dependabot)][dependabot-pulls]
-[![Semantic Versioning](https://img.shields.io/badge/versioning-semantic-black?style=for-the-badge&logo=semver)][github-releases]
-[![Pre-Commit Enabled](https://img.shields.io/badge/Pre--Commit-Enabled-blue?style=for-the-badge&logo=pre-commit)][precommit-config]
-[![License](https://img.shields.io/github/license/AdamSaleh/log2reportportal?color=red&style=for-the-badge)][project-license]
-[![Go v1.18](https://img.shields.io/badge/Go-%20v1.18-black?style=for-the-badge&logo=go)][gomod-file]
+[![Dependencies Status](https://img.shields.io/badge/Dependencies-Up%20to%20Date-brightgreen?style=for-the-badge&logo=dependabot)]
+[![Semantic Versioning](https://img.shields.io/badge/versioning-semantic-black?style=for-the-badge&logo=semver)]
+[![Pre-Commit Enabled](https://img.shields.io/badge/Pre--Commit-Enabled-blue?style=for-the-badge&logo=pre-commit)]
+[![License](https://img.shields.io/github/license/AdamSaleh/log2reportportal?color=red&style=for-the-badge)]
+[![Go v1.18](https://img.shields.io/badge/Go-%20v1.18-black?style=for-the-badge&logo=go)]
 
 A cli tool to upload testlogs as launches to reportportal
 
@@ -17,7 +16,7 @@ Takes log on stdin, and uploads the test-results to a specific project as a new 
 
 ```
 export RP_TOKEN=<token>
-cat test_data/argocd-e2e-186_last.log | log2reportportal -name launch20240101 -project gitops-adhoc -url https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com -skipTs
+cat test_data/parallel-kuttl.log | log2reportportal -launch launch20240101 -suite parallel-kuttl -project gitops-adhoc -url https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com -skipTls
 ```
 
 should then appear as a new launch in https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com

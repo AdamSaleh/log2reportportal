@@ -85,7 +85,7 @@ func (m *MockReportBuilder) Finish(time string) {
 	m.FinishStamp = time
 }
 
-func (m *MockReportBuilder) EnsureLaunch(name, startTime string) {
+func (m *MockReportBuilder) EnsureLaunch(name, suite, startTime string) {
 	if m.getLaunch(name) >= 0 {
 		return
 	}
@@ -141,7 +141,7 @@ var _ = Describe("Testing parsing", func() {
 
 	DescribeTable("Processing with MockReportBuilder", func(inputFile, expectedtFile string) {
 		actual := &MockReportBuilder{Cases: map[string]map[string][]map[string]string{}}
-		processLinear(actual, "TestName", script.File(inputFile))
+		processLinear(actual, "TestName", "TestSuite", script.File(inputFile))
 		file, err := os.OpenFile(expectedtFile, os.O_RDONLY, 0o666)
 		if errors.Is(err, os.ErrNotExist) {
 			b, errM := json.MarshalIndent(actual, "", "    ")
@@ -203,7 +203,7 @@ var _ = Describe("Testing mock upload", func() {
 			mockOkJSON(tu))
 		httpmock.RegisterResponder(
 			"PUT",
-			"http://portal/api/v1/TEST_PROJECT/launch/testid/finish/",
+			"http://portal/api/v1/TEST_PROJECT/launch/testid/finish",
 			mockOkJSON(tr))
 
 		httpmock.RegisterResponder(
@@ -223,7 +223,7 @@ var _ = Describe("Testing mock upload", func() {
 
 		lg := NewRPLogger(client, "TOKEN", "TEST_PROJECT")
 
-		processLinear(lg, "REPORT_NAME", script.File("./test_data/minimal-kuttl.txt"))
+		processLinear(lg, "REPORT_NAME", "REPORT_SUITE", script.File("./test_data/minimal-kuttl.txt"))
 		file, err := os.OpenFile("./test_data/http_log", os.O_RDONLY, 0o666)
 		if errors.Is(err, os.ErrNotExist) {
 			_, errW := script.Echo(l.log).WriteFile("./test_data/http_log")
