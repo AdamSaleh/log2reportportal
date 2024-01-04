@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
 	"crypto/tls"
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"regexp"
 	"strconv"
@@ -405,21 +407,39 @@ func processLinear(lg TestReportBuilder, launchName, suiteName string, filePipe 
 	lg.Finish(m.state["time"])
 }
 
+func numberOfLaunchesWithName(client *resty.Client, token, portalURL, reportName string) int {
+	url := fmt.Sprintf("%s/api/v1/gitops-adhoc/launch?filter.eq.name=%s", portalURL, reportName)
+	r, err := http.NewRequestWithContext(context.Background(), "GET", url, http.NoBody)
+	if err != nil {
+		panic(err)
+	}
+	r.Header.Add("Authorization", "Bearer "+token)
+	c, err := script.NewPipe().WithHTTPClient(client.GetClient()).
+		Do(r).JQ(".content[].name").CountLines()
+	if err != nil {
+		panic(err)
+	}
+	return c
+}
+
 func main() {
+	var logFile string
 	var suiteName string
 	var reportName string
 	var reportProject string
 	var portalURL string
 	var skipTLS bool
+	var skipExisting bool
 
 	t := time.Now()
+	flag.StringVar(&logFile, "file", "", "path to the logfile, will assume stdin if set to -")
 	flag.StringVar(&reportName, "launch", fmt.Sprintf("run%s", t.Format("20060102150405")), "name of the report")
 	flag.StringVar(&suiteName, "name", fmt.Sprintf("run%s", t.Format("20060102150405")), "name of the report")
 	flag.StringVar(&reportProject, "project", "gitops-adhoc", "project to upload to")
 	flag.StringVar(&portalURL, "url",
 		"https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com", "url of the report portal")
 	flag.BoolVar(&skipTLS, "skipTls", false, "skip TLS checks")
-
+	flag.BoolVar(&skipExisting, "skipExisting", false, "skip existing launches")
 	flag.Parse()
 
 	token, ok := os.LookupEnv("RP_TOKEN")
@@ -429,7 +449,17 @@ func main() {
 	client := resty.New()
 	client.SetBaseURL(portalURL)
 	client.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: skipTLS})
+	client.SetAuthToken(token)
+	if skipExisting {
+		if numberOfLaunchesWithName(client, token, portalURL, reportName) > 0 {
+			fmt.Printf("Launch %s already reported\n", reportName)
+			return
+		}
+	}
 	lg := NewRPLogger(client, token, reportProject)
-
-	processLinear(lg, reportName, suiteName, script.Stdin())
+	if logFile == "-" {
+		processLinear(lg, reportName, suiteName, script.Stdin())
+	} else {
+		processLinear(lg, reportName, suiteName, script.File(logFile))
+	}
 }
