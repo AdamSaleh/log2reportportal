@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"regexp"
@@ -141,7 +142,7 @@ var _ = Describe("Testing parsing", func() {
 
 	DescribeTable("Processing with MockReportBuilder", func(inputFile, expectedtFile string) {
 		actual := &MockReportBuilder{Cases: map[string]map[string][]map[string]string{}}
-		processLinear(actual, "TestName", "TestSuite", script.File(inputFile))
+		processLinear(actual, "TestName", "TestSuite", script.File(inputFile), true)
 		file, err := os.OpenFile(expectedtFile, os.O_RDONLY, 0o666)
 		if errors.Is(err, os.ErrNotExist) {
 			b, errM := json.MarshalIndent(actual, "", "    ")
@@ -223,7 +224,7 @@ var _ = Describe("Testing mock upload", func() {
 
 		lg := NewRPLogger(client, "TOKEN", "TEST_PROJECT")
 
-		processLinear(lg, "REPORT_NAME", "REPORT_SUITE", script.File("./test_data/minimal-kuttl.txt"))
+		processLinear(lg, "REPORT_NAME", "REPORT_SUITE", script.File("./test_data/minimal-kuttl.txt"), true)
 		file, err := os.OpenFile("./test_data/http_log", os.O_RDONLY, 0o666)
 		if errors.Is(err, os.ErrNotExist) {
 			_, errW := script.Echo(l.log).WriteFile("./test_data/http_log")
@@ -231,7 +232,7 @@ var _ = Describe("Testing mock upload", func() {
 		} else {
 			Expect(err).To(BeNil())
 			defer file.Close()
-			bytes, _ := ioutil.ReadAll(file)
+			bytes, _ := io.ReadAll(file)
 			Expect(l.log).To(Equal(string(bytes)))
 		}
 	})

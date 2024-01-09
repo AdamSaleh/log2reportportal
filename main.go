@@ -3,12 +3,14 @@ package main
 import (
 	"context"
 	"crypto/tls"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"net/http"
 	"os"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/bitfield/script"
@@ -17,34 +19,28 @@ import (
 )
 
 type RPLaunch struct {
-	Name      string `json:"name,omitempty"`
-	UUID      string `json:"uuid,omitempty"`
-	StartTime int    `json:"startTime,omitempty"`
-	EndTime   int    `json:"endTime,omitempty"`
-	ID        int    `json:"id,omitempty"`
+	Name      string      `json:"name,omitempty"`
+	UUID      string      `json:"uuid,omitempty"`
+	ID        json.Number `json:"id,omitempty"`
+	RerunOf   string      `json:"rerunOf,omitempty"`
+	StartTime int         `json:"startTime,omitempty"`
+	EndTime   int         `json:"endTime,omitempty"`
+	Rerun     bool        `json:"rerun,omitempty"`
 }
-
-/*func (i *RPLaunch) setUUID(uuid string) {
-	i.UUID = uuid
-}*/
 
 type Launches struct {
 	Content []RPLaunch `json:"content"`
 }
 
-/*type RPWithUUID interface {
-	setUUID(uuid string)
-}*/
-
 type RPItem struct {
-	Name        string `json:"name,omitempty"`
-	Type        string `json:"type,omitempty"`
-	LaunchUUID  string `json:"launchUuid"`
-	Description string `json:"description"`
-	UUID        string `json:"uuid,omitempty"`
-	StartTime   int    `json:"startTime,omitempty"`
-	EndTime     int    `json:"endTime,omitempty"`
-	ID          int    `json:"id,omitempty"`
+	Name        string      `json:"name,omitempty"`
+	Type        string      `json:"type,omitempty"`
+	LaunchUUID  string      `json:"launchUuid"`
+	Description string      `json:"description"`
+	UUID        string      `json:"uuid,omitempty"`
+	ID          json.Number `json:"id,omitempty"`
+	StartTime   int         `json:"startTime,omitempty"`
+	EndTime     int         `json:"endTime,omitempty"`
 }
 
 /*func (i *RPItem) setUUID(uuid string) {
@@ -73,7 +69,7 @@ type RPLog struct {
 }*/
 
 type ResultID struct {
-	ID string `json:"id"`
+	ID string `json:"id"` // beware, returns uuid
 }
 
 type RPLogger struct {
@@ -192,14 +188,21 @@ func toUnix(startTime string) int {
 
 func (p *RPLogger) EnsureLaunch(name, suite, startTime string) {
 	if p.getLaunch(name) < 0 {
-		l := &RPLaunch{Name: name, StartTime: toUnix(startTime)}
+		l := &RPLaunch{Name: name, StartTime: toUnix(startTime), Rerun: false}
 		p.cPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), "", l)
 		p.launch = l
 	}
+	if p.launch.UUID == "" {
+		p.gPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), "", string(p.launch.ID), p.launch)
+	}
 	if p.getSuite(suite) < 0 {
 		s := &RPItem{Name: suite, Type: "suite", LaunchUUID: p.launch.UUID, StartTime: toUnix(startTime)}
+		fmt.Println(s)
 		p.cPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), "", s)
 		p.suite = s
+	}
+	if p.suite.UUID == "" {
+		p.gPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), "", string(p.suite.ID), p.suite)
 	}
 }
 
@@ -257,7 +260,12 @@ func (p *RPLogger) FinnishTest(name, startTime, result, t string) {
 }
 
 func (p *RPLogger) Finish(t string) {
-	p.uPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), p.launch.UUID, "finish", &RPItem{EndTime: toUnix(t)})
+	if p.suite != nil {
+		p.uPortalItem(fmt.Sprintf("api/v1/%s/item", p.project), "", p.suite.UUID,
+			&RPItem{EndTime: toUnix(t), LaunchUUID: p.launch.UUID})
+	}
+	p.uPortalItem(fmt.Sprintf("api/v1/%s/launch", p.project), p.launch.UUID, "finish",
+		&RPItem{EndTime: toUnix(t)})
 }
 
 func getMatches(re *regexp.Regexp, str string) map[string]string {
@@ -319,10 +327,11 @@ type PatternActions struct {
 type StateMachine struct {
 	state            map[string]string
 	patternToActions []*PatternActions
+	noErrors         bool
 }
 
-func mkMachine(initialState map[string]string) *StateMachine {
-	return &StateMachine{state: initialState, patternToActions: []*PatternActions{}}
+func mkMachine(initialState map[string]string, noErrors bool) *StateMachine {
+	return &StateMachine{state: initialState, patternToActions: []*PatternActions{}, noErrors: noErrors}
 }
 
 func (m *StateMachine) pattern(r string, a ...func(s, m map[string]string) map[string]string) *StateMachine {
@@ -338,8 +347,10 @@ func (m *StateMachine) feed(line string) {
 			for _, f := range pa.actions {
 				func() {
 					defer func() {
-						if r := recover(); r != nil {
-							fmt.Println("Recovered in f", r)
+						if m.noErrors {
+							if r := recover(); r != nil {
+								fmt.Printf("Recovered in f - %v\n", r)
+							}
 						}
 					}()
 					m.state = f(m.state, mt)
@@ -365,9 +376,10 @@ type TestReportBuilder interface {
 	EnsureLaunch(name, suite, startTime string)
 }
 
-func processLinear(lg TestReportBuilder, launchName, suiteName string, filePipe *script.Pipe) {
+func processLinear(lg TestReportBuilder, launchName, suiteName string, filePipe *script.Pipe, noErrors bool) {
 	r := &DefaultLines{}
-	m := mkMachine(map[string]string{"test": "", "level": "", "startDate": "", "time": "", "launch": ""}).
+	m := mkMachine(map[string]string{"test": "", "level": "", "startDate": "", "time": "", "launch": ""},
+		noErrors).
 		pattern(r.reSTAMP(), mapCopy).
 		pattern(r.reCONT(), mapCopy).
 		pattern(r.rePAUSE(), mapCopy).
@@ -407,19 +419,71 @@ func processLinear(lg TestReportBuilder, launchName, suiteName string, filePipe 
 	lg.Finish(m.state["time"])
 }
 
-func numberOfLaunchesWithName(client *resty.Client, token, portalURL, reportName string) int {
-	url := fmt.Sprintf("%s/api/v1/gitops-adhoc/launch?filter.eq.name=%s", portalURL, reportName)
+func firstLaunchIDWithName(client *resty.Client, token, portalURL, project, reportName string) string {
+	url := fmt.Sprintf("%s/api/v1/%s/launch?filter.eq.name=%s", portalURL, project, reportName)
+	fmt.Println(url)
 	r, err := http.NewRequestWithContext(context.Background(), "GET", url, http.NoBody)
 	if err != nil {
 		panic(err)
 	}
 	r.Header.Add("Authorization", "Bearer "+token)
 	c, err := script.NewPipe().WithHTTPClient(client.GetClient()).
-		Do(r).JQ(".content[].name").CountLines()
+		Do(r).JQ(".content[0].id").String()
 	if err != nil {
 		panic(err)
 	}
-	return c
+	return strings.TrimSpace(c)
+}
+
+func firstSuiteIDWithName(client *resty.Client, token, portalURL, project, launchID, suiteName string) string {
+	url := fmt.Sprintf("%s/api/v1/%s/item?filter.eq.launchId=%s&filter.eq.name=%s",
+		portalURL, project, launchID, suiteName)
+	fmt.Println(url)
+
+	r, err := http.NewRequestWithContext(context.Background(), "GET", url, http.NoBody)
+	if err != nil {
+		panic(err)
+	}
+	r.Header.Add("Authorization", "Bearer "+token)
+	c, err := script.NewPipe().WithHTTPClient(client.GetClient()).
+		Do(r).JQ(".content[0].id").String()
+	if err != nil {
+		panic(err)
+	}
+	return strings.TrimSpace(c)
+}
+
+const nullResult = "null"
+
+func run(portalURL, token, reportProject, reportName, suiteName, logFile string, skipTLS, skipExisting, noErrors bool) {
+	client := resty.New()
+	client.SetBaseURL(portalURL)
+	client.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: skipTLS})
+	client.SetAuthToken(token)
+
+	lg := NewRPLogger(client, token, reportProject)
+
+	lid := firstLaunchIDWithName(client, token, portalURL, reportProject, reportName)
+	if lid != nullResult {
+		sid := firstSuiteIDWithName(client, token, portalURL, reportProject, lid, suiteName)
+
+		if (sid != nullResult) && skipExisting {
+			fmt.Printf("Suite %s in launch %s already reported\n", suiteName, reportName)
+			return
+		}
+
+		// we are uploading new suite to existing launch, so we should pre-fill the launch
+		lg.launch = &RPLaunch{Name: reportName, ID: json.Number(lid), UUID: ""}
+		if sid != nullResult {
+			lg.suite = &RPItem{Name: suiteName, ID: json.Number(sid), UUID: ""}
+		}
+	}
+
+	if logFile == "-" {
+		processLinear(lg, reportName, suiteName, script.Stdin(), noErrors)
+	} else {
+		processLinear(lg, reportName, suiteName, script.File(logFile), noErrors)
+	}
 }
 
 func main() {
@@ -430,6 +494,7 @@ func main() {
 	var portalURL string
 	var skipTLS bool
 	var skipExisting bool
+	var ignoreErrors bool
 
 	t := time.Now()
 	flag.StringVar(&logFile, "file", "", "path to the logfile, will assume stdin if set to -")
@@ -440,26 +505,13 @@ func main() {
 		"https://reportportal-gitops-qe.apps.ocp-c1.prod.psi.redhat.com", "url of the report portal")
 	flag.BoolVar(&skipTLS, "skipTls", false, "skip TLS checks")
 	flag.BoolVar(&skipExisting, "skipExisting", false, "skip existing launches")
+	flag.BoolVar(&ignoreErrors, "ignoreErrors", false, "recover from all panics")
+
 	flag.Parse()
 
 	token, ok := os.LookupEnv("RP_TOKEN")
 	if !ok {
 		panic("RP_TOKEN env var needs to be set to authenticate")
 	}
-	client := resty.New()
-	client.SetBaseURL(portalURL)
-	client.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: skipTLS})
-	client.SetAuthToken(token)
-	if skipExisting {
-		if numberOfLaunchesWithName(client, token, portalURL, reportName) > 0 {
-			fmt.Printf("Launch %s already reported\n", reportName)
-			return
-		}
-	}
-	lg := NewRPLogger(client, token, reportProject)
-	if logFile == "-" {
-		processLinear(lg, reportName, suiteName, script.Stdin())
-	} else {
-		processLinear(lg, reportName, suiteName, script.File(logFile))
-	}
+	run(portalURL, token, reportProject, reportName, suiteName, logFile, skipTLS, skipExisting, ignoreErrors)
 }
